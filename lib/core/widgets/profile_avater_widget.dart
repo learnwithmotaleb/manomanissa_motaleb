@@ -1,0 +1,106 @@
+import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shadify/shadify.dart';
+
+import '../themes/token.dart';
+
+class ProfileAvatarWidget extends StatelessWidget {
+  final String? imageUrl;
+  final File? imageFile; // ✅ New optional file
+  final double size;
+
+  final bool hasBorder;
+  final Color? borderColor;
+  final double borderWidth;
+
+  const ProfileAvatarWidget({
+    super.key,
+    this.imageUrl,
+    this.imageFile,
+    this.size = 48,
+    this.hasBorder = false,
+    this.borderColor,
+    this.borderWidth = 2,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Widget imageWidget;
+
+    if (imageFile != null) {
+      // ✅ Show local file image
+      imageWidget = Image.file(
+        imageFile!,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+      );
+    } else if (imageUrl != null && imageUrl!.isNotEmpty) {
+      // ✅ Show network image
+      imageWidget = CachedNetworkImage(
+        imageUrl: imageUrl!,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        placeholder: (context, url) => Container(
+          width: size.w,
+          height: size.h,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey.shade200,
+          ),
+        ).withShadifyLoading(
+          loading: true,
+          borderRadius: BorderRadius.circular(100.r),
+        ),
+        errorWidget: (context, url, error) => Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey.shade300,
+          ),
+          child: Icon(
+            Icons.image_not_supported,
+            color: Colors.grey,
+            size: 20.h,
+          ),
+        ),
+      );
+    } else {
+      // ✅ Default placeholder if nothing provided
+      imageWidget = Container(
+        width: size.w,
+        height: size.h,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.grey.shade300,
+        ),
+        child: Icon(
+          Icons.person,
+          color: Colors.white,
+          size: 20.h,
+        ),
+      );
+    }
+
+    return Container(
+      width: size.w,
+      height: size.h,
+      padding: hasBorder ? EdgeInsets.all(borderWidth) : EdgeInsets.zero,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: hasBorder
+            ? Border.all(
+          color: borderColor ?? CustomColors.primary,
+          width: borderWidth,
+        )
+            : null,
+      ),
+      child: ClipOval(child: imageWidget),
+    );
+  }
+}
