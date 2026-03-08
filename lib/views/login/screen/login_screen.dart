@@ -1,3 +1,5 @@
+import 'package:manomanissa/views/welcome/screen/welcome_screen.dart';
+
 import '../../../core/utils/basic_import.dart';
 import '../controller/login_controller.dart';
 

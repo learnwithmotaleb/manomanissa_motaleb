@@ -1,3 +1,21 @@
+import '../bind/profile_setup_binding.dart';
+import '../views/profile_setup/screen/profile_setup_screen.dart';
+import '../bind/verification_binding.dart';
+import '../views/verification/screen/verification_screen.dart';
+import '../bind/confirm_binding.dart';
+import '../views/confirm/screen/confirm_screen.dart';
+import '../bind/reset_password_binding.dart';
+import '../views/reset_password/screen/reset_password_screen.dart';
+import '../bind/otp_binding.dart';
+import '../views/otp/screen/otp_screen.dart';
+import '../bind/support_binding.dart';
+import '../views/support/screen/support_screen.dart';
+import '../bind/questions_binding.dart';
+import '../views/questions/screen/questions_screen.dart';
+import '../bind/forgot_password_binding.dart';
+import '../views/forgot_password/screen/forgot_password_screen.dart';
+import '../bind/register_binding.dart';
+import '../views/register/screen/register_screen.dart';
 import '../bind/welcome_binding.dart';
 import '../views/welcome/screen/welcome_screen.dart';
 import '../bind/navigation_binding.dart';
@@ -11,6 +29,15 @@ part 'pages.dart';
 
 class Routes {
   static var list = RoutePageList.list;
+static const profile_setupScreen = '/profile_setupScreen';
+static const verificationScreen = '/verificationScreen';
+static const confirmScreen = '/confirmScreen';
+static const reset_passwordScreen = '/reset_passwordScreen';
+static const otpScreen = '/otpScreen';
+static const supportScreen = '/supportScreen';
+static const questionsScreen = '/questionsScreen';
+static const forgot_passwordScreen = '/forgot_passwordScreen';
+static const registerScreen = '/registerScreen';
 static const welcomeScreen = '/welcomeScreen';
 static const navigationScreen = '/navigationScreen';
 static const loginScreen = '/loginScreen';

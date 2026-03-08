@@ -1,18 +1,17 @@
 import '../../../core/utils/basic_import.dart';
-class LoginController extends GetxController {
+class RegisterController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
   final passwordFocusNode = FocusNode();
 
   final isLoading = false.obs;
 
 
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    passwordFocusNode.dispose();
-    super.onClose();
-  }
+
+
+
+
+
 }

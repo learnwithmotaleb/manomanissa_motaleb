@@ -6,7 +6,6 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final Color? titleColor;
   final Color? iconColor;
-  final bool isPrimary;
   final bool isSkip;
   final List<Widget>? actions;
 
@@ -14,7 +13,6 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     this.isBack = true,
-    this.isPrimary = false,
     this.backgroundColor,
     this.titleColor,
     this.iconColor,
@@ -33,23 +31,33 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       centerTitle: true,
       leading: isBack
-          ? InkWell(
-              borderRadius: BorderRadius.circular(8.r),
-              onTap: () => Get.back(),
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: iconColor ?? (isPrimary ? Colors.blue : context.isDarkMode
-                    ? CustomColors.whiteColor
-                    : CustomColors.blackColor),
+          ? Padding(
+              padding: EdgeInsets.only(left: Dimensions.defaultHorizontalSize * 0.6),
+              child: GestureDetector(
+                onTap: () => Get.back(),
+                child: Center(
+                  child: CustomPaint(
+                    painter: _CircleGlowBorderPainter(
+                      glowColor: iconColor ?? const Color(0xFF039CE0),
+                    ),
+                    child: SizedBox(
+                      width: 52.w,
+                      height: 52.w,
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: iconColor ?? CustomColors.primary,
+                        size: 18.h,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             )
           : null,
       title: Text(
         title,
         style: TextStyle(
-          color: titleColor ?? (isPrimary ? Colors.blue : context.isDarkMode
-              ? CustomColors.whiteColor
-              : CustomColors.blackColor),
+          color: titleColor ?? Colors.white,
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
         ),
@@ -59,12 +67,13 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
           InkWell(
             onTap: () {},
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Text(
                 'Skip',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
+                  fontSize: 14.sp,
                 ),
               ),
             ),
@@ -75,4 +84,40 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
+class _CircleGlowBorderPainter extends CustomPainter {
+  final Color glowColor;
 
+  _CircleGlowBorderPainter({required this.glowColor});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = size.width / 2;
+
+    // Outer glow
+    final glowPaint = Paint()
+      ..color = glowColor.withOpacity(0.25)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 6
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
+    canvas.drawCircle(center, radius, glowPaint);
+
+    // Solid border
+    final borderPaint = Paint()
+      ..shader = LinearGradient(
+        colors: [
+          glowColor.withOpacity(0.2),
+          glowColor,
+          glowColor.withOpacity(0.2),
+        ],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ).createShader(Rect.fromCircle(center: center, radius: radius))
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.5;
+    canvas.drawCircle(center, radius - 1, borderPaint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}

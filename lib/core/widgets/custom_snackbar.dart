@@ -42,7 +42,7 @@ class CustomSnackBar {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.rawSnackbar(
-        backgroundColor: CustomColors.secondary,
+        backgroundColor: CustomColors.primary,
         snackStyle: SnackStyle.FLOATING,
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),

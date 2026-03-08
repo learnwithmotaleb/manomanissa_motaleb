@@ -31,6 +31,12 @@ class $AssetsDummyGen {
   AssetGenImage get carecterf =>
       const AssetGenImage('assets/dummy/carecterf.gif');
 
+  /// File path: assets/dummy/female.png
+  AssetGenImage get female => const AssetGenImage('assets/dummy/female.png');
+
+  /// File path: assets/dummy/male.png
+  AssetGenImage get male => const AssetGenImage('assets/dummy/male.png');
+
   /// File path: assets/dummy/splashgif.gif
   AssetGenImage get splashgif =>
       const AssetGenImage('assets/dummy/splashgif.gif');
@@ -42,6 +48,8 @@ class $AssetsDummyGen {
     bg,
     button,
     carecterf,
+    female,
+    male,
     splashgif,
   ];
 }

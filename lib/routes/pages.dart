@@ -4,6 +4,56 @@ class RoutePageList {
   static var list = [
     //Page Route List
 GetPage(
+    name: Routes.profile_setupScreen,
+    page: () => const ProfileSetupScreen(),
+    binding: ProfileSetupBinding(),
+  ),
+GetPage(
+    name: Routes.verificationScreen,
+    page: () => const VerificationScreen(),
+    binding: VerificationBinding(),
+  ),
+GetPage(
+    name: Routes.confirmScreen,
+    page: () => const ConfirmScreen(),
+    binding: ConfirmBinding(),
+  ),
+GetPage(
+    name: Routes.reset_passwordScreen,
+    page: () => const ResetPasswordScreen(),
+    binding: ResetPasswordBinding(),
+  ),
+GetPage(
+    name: Routes.otpScreen,
+    page: () => const OtpScreen(),
+    binding: OtpBinding(),
+  ),
+GetPage(
+    name: Routes.supportScreen,
+    page: () => const SupportScreen(),
+    binding: SupportBinding(),
+  ),
+GetPage(
+    name: Routes.navigationScreen,
+    page: () => const NavigationScreen(),
+    binding: NavigationBinding(),
+  ),
+GetPage(
+    name: Routes.questionsScreen,
+    page: () => const QuestionsScreen(),
+    binding: QuestionsBinding(),
+  ),
+GetPage(
+    name: Routes.forgot_passwordScreen,
+    page: () => const ForgotPasswordScreen(),
+    binding: ForgotPasswordBinding(),
+  ),
+GetPage(
+    name: Routes.registerScreen,
+    page: () => const RegisterScreen(),
+    binding: RegisterBinding(),
+  ),
+GetPage(
     name: Routes.welcomeScreen,
     page: () => const WelcomeScreen(),
     binding: WelcomeBinding(),

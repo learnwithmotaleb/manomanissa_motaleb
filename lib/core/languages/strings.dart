@@ -32,4 +32,39 @@ class Strings {
   static const String french = "French";
   static const String createAnAccount = "Create an account";
   static const String frequentlyAskedQuestions = "Frequently Asked Questions";
+
+  /// Login Screen
+  static const String email = "Email";
+  static const String enterPassword = "Enter Password";
+  static const String forgotPassword = "Forgot Password?";
+  static const String iDontHaveAnAccount = "I don't have an account";
+  static const String contactSupportHelp = "Contact & support / Help";
+
+
+  /// Forgot Password
+
+  static const String forgotYourPassword = "Forgot your password";
+
+  static const String forgotPasswordDescription =
+      "We will send a verification code to this email address to confirm your account";
+
+  static const String sendConfirmation = "Send Confirmation";
+  static const String verification = "Verification";
+  static const String enterYourSIzDIGitCode = "Enter your 6-digit code";
+  static const String createAnewPass = "Create a new password";
+  static const String changePass = "Change password";
+  static const String confirmPass = "Confirm password";
+  /// Password Changed
+  static const String gladToSeeYouAgain = "Glad to see you again";
+
+  static const String passwordChangedMessage =
+      "Your password has been changed. Continue to login";
+
+  static const String createAccount = "Create Account";
+  static const String setupProfile = "Setup Profile";
+  static const String continues = "continue";
+  static const String enterYourName = "Enter your name";
+  static const String alreadyHaveAccount = "I already have an account ";
+
+
 }

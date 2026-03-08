@@ -68,10 +68,12 @@ class WelcomeScreenMobile extends GetView<WelcomeController> {
                 ),
                 Space.height.v15,
 
-                PrimaryButtonWidget(title: Strings.logIn, onPressed: () {}),
+                PrimaryButtonWidget(title: Strings.logIn, onPressed: () => Get.toNamed(Routes.loginScreen),),
                 PrimaryButtonWidget(
                   title: Strings.createAnAccount,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(Routes.registerScreen);
+                  },
                 ),
 
                 Space.height.v40,
