@@ -1,4 +1,7 @@
+import 'dart:math' as math;
+
 import '../../../core/utils/basic_import.dart';
+import '../../../w.dart';
 import '../controller/welcome_controller.dart';
 
 part 'welcome_screen_mobile.dart';
