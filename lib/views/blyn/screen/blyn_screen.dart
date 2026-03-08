@@ -1,4 +1,5 @@
 import '../../../core/utils/basic_import.dart';
+import '../../welcome/screen/welcome_screen.dart';
 import '../controller/blyn_controller.dart';
 
 part 'blyn_screen_mobile.dart';

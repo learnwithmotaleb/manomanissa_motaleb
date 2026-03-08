@@ -5,7 +5,6 @@ class CheckScreenMobile extends GetView<CheckController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: Strings.checkIn2),
       body: SafeArea(
         child: Obx(
               () => ListView(

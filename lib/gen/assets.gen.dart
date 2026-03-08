@@ -47,6 +47,9 @@ class $AssetsDummyGen {
   AssetGenImage get splashgif =>
       const AssetGenImage('assets/dummy/splashgif.gif');
 
+  /// File path: assets/dummy/welcom.png
+  AssetGenImage get welcom => const AssetGenImage('assets/dummy/welcom.png');
+
   /// List of all assets
   List<dynamic> get values => [
     frame2147229116Png,
@@ -59,6 +62,7 @@ class $AssetsDummyGen {
     female,
     male,
     splashgif,
+    welcom,
   ];
 }
 
@@ -78,6 +82,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ai 1.png
   AssetGenImage get ai1 => const AssetGenImage('assets/icons/ai 1.png');
 
+  /// File path: assets/icons/en.png
+  AssetGenImage get en => const AssetGenImage('assets/icons/en.png');
+
+  /// File path: assets/icons/fr.png
+  AssetGenImage get fr => const AssetGenImage('assets/icons/fr.png');
+
   /// File path: assets/icons/home-1 [Neaticons].png
   AssetGenImage get home1Neaticons =>
       const AssetGenImage('assets/icons/home-1 [Neaticons].png');
@@ -94,6 +104,8 @@ class $AssetsIconsGen {
     frame,
     group,
     ai1,
+    en,
+    fr,
     home1Neaticons,
     orange,
     q,

@@ -1,3 +1,17 @@
+import '../bind/language_binding.dart';
+import '../views/language/screen/language_screen.dart';
+import '../bind/about_binding.dart';
+import '../views/about/screen/about_screen.dart';
+import '../bind/security_binding.dart';
+import '../views/security/screen/security_screen.dart';
+import '../bind/health_condition_binding.dart';
+import '../views/health_condition/screen/health_condition_screen.dart';
+import '../bind/goal_screen_binding.dart';
+import '../views/goal_screen/screen/goal_screen_screen.dart';
+import '../bind/update_profile_binding.dart';
+import '../views/update_profile/screen/update_profile_screen.dart';
+import '../bind/ai_chat_binding.dart';
+import '../views/ai_chat/screen/ai_chat_screen.dart';
 import '../bind/nutrition_binding.dart';
 import '../views/nutrition/screen/nutrition_screen.dart';
 import '../bind/activity_binding.dart';
@@ -47,6 +61,13 @@ part 'pages.dart';
 
 class Routes {
   static var list = RoutePageList.list;
+static const languageScreen = '/languageScreen';
+static const aboutScreen = '/aboutScreen';
+static const securityScreen = '/securityScreen';
+static const health_conditionScreen = '/health_conditionScreen';
+static const goal_screenScreen = '/goal_screenScreen';
+static const update_profileScreen = '/update_profileScreen';
+static const ai_chatScreen = '/ai_chatScreen';
 static const nutritionScreen = '/nutritionScreen';
 static const activityScreen = '/activityScreen';
 static const hydrationScreen = '/hydrationScreen';

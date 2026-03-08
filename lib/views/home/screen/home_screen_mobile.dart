@@ -15,12 +15,10 @@ class HomeScreenMobile extends GetView<HomeController> {
       ),
       child: Stack(
         children: [
-          // Background
           Positioned.fill(
             child: Image.asset(Assets.dummy.frame.path, fit: BoxFit.cover),
           ),
 
-          // Fixed Character Image
           Positioned(
             top: size.height * 0.30,
             left: 0,
@@ -34,7 +32,6 @@ class HomeScreenMobile extends GetView<HomeController> {
             ),
           ),
 
-          // Scrollable Content
           CustomScrollView(
             physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics(),
@@ -50,10 +47,7 @@ class HomeScreenMobile extends GetView<HomeController> {
                     Space.height.v20,
                     Row(
                       mainAxisAlignment: mainSpaceBet,
-                      children: [
-                        _share(),
-                        SizedBox(),
-                      ],
+                      children: [_share(), SizedBox()],
                     ),
                     Space.height.v40,
                     HomeInfoCard(),
@@ -118,7 +112,8 @@ class HomeScreenMobile extends GetView<HomeController> {
                         FlSpot(5, 6.5),
                         FlSpot(6, 7.0),
                       ],
-                    ),                    Space.height.v40,
+                    ),
+                    Space.height.v40,
                   ]),
                 ),
               ),

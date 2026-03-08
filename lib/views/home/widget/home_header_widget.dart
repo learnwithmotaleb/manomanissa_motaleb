@@ -11,7 +11,6 @@ class HomeHeaderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: crossStart,
       children: [
-        // ─── Hello Row ───────────────────────────────────
         Row(
           mainAxisAlignment: mainSpaceBet,
           crossAxisAlignment: crossCenter,
@@ -26,7 +25,7 @@ class HomeHeaderWidget extends StatelessWidget {
                 ),
                 Space.width.v5,
                 TextWidget(
-                  'Rakibul Islam',
+                  'Rakibul',
                   fontSize: Dimensions.headlineMedium * 0.75,
                   fontWeight: FontWeight.w700,
                   color: CustomColors.primary,

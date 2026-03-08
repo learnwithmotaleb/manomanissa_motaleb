@@ -4,6 +4,41 @@ class RoutePageList {
   static var list = [
     //Page Route List
 GetPage(
+    name: Routes.languageScreen,
+    page: () => const LanguageScreen(),
+    binding: LanguageBinding(),
+  ),
+GetPage(
+    name: Routes.aboutScreen,
+    page: () => const AboutScreen(),
+    binding: AboutBinding(),
+  ),
+GetPage(
+    name: Routes.securityScreen,
+    page: () => const SecurityScreen(),
+    binding: SecurityBinding(),
+  ),
+GetPage(
+    name: Routes.health_conditionScreen,
+    page: () => const HealthConditionScreen(),
+    binding: HealthConditionBinding(),
+  ),
+GetPage(
+    name: Routes.goal_screenScreen,
+    page: () => const GoalScreenScreen(),
+    binding: GoalScreenBinding(),
+  ),
+GetPage(
+    name: Routes.update_profileScreen,
+    page: () => const UpdateProfileScreen(),
+    binding: UpdateProfileBinding(),
+  ),
+GetPage(
+    name: Routes.ai_chatScreen,
+    page: () => const AiChatScreen(),
+    binding: AiChatBinding(),
+  ),
+GetPage(
     name: Routes.nutritionScreen,
     page: () => const NutritionScreen(),
     binding: NutritionBinding(),

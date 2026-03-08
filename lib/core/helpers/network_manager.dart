@@ -3,7 +3,6 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 /// ========================================== 🔥 NETWORK MANAGER (Static Methods for Main.dart) ========================================== ///
@@ -104,104 +103,11 @@ class NetworkChecker extends GetxController {
 }
 
 /// ========================================== 🔥 CUSTOM EXCEPTIONS ========================================== ///
-class ApiException implements Exception {
-  final String message;
-  final int? statusCode;
-  final dynamic data;
 
-  ApiException({required this.message, this.statusCode, this.data});
 
-  @override
-  String toString() => 'ApiException:  (Status: )';
-}
 
-class NetworkException implements Exception {
-  final String message;
-
-  NetworkException([this.message = 'No internet connection']);
-
-  @override
-  String toString() => 'NetworkException: ';
-}
-
-class TimeoutException implements Exception {
-  final String message;
-
-  TimeoutException([this.message = 'Request timeout']);
-
-  @override
-  String toString() => 'TimeoutException: ';
-}
-
-class UnauthorizedException implements Exception {
-  final String message;
-
-  UnauthorizedException([this.message = 'Unauthorized access']);
-
-  @override
-  String toString() => 'UnauthorizedException: ';
-}
-
-class ServerException implements Exception {
-  final String message;
-  final int? statusCode;
-
-  ServerException({this.message = 'Server error occurred', this.statusCode});
-
-  @override
-  String toString() => 'ServerException:  (Status: )';
-}
-
-class CancelledException implements Exception {
-  final String message;
-
-  CancelledException([this.message = 'Request cancelled']);
-
-  @override
-  String toString() => 'CancelledException: ';
-}
 
 /// ========================================== 🔥 REQUEST CANCELLATION ========================================== ///
-class RequestCancellation {
-  static final Map<String, CancelToken> _cancelTokens = {};
-
-  /// Create or get cancel token for a request
-  static CancelToken getToken(String key) {
-    if (_cancelTokens.containsKey(key)) {
-      _cancelTokens[key]!.cancel('Request cancelled due to new request');
-    }
-    _cancelTokens[key] = CancelToken();
-    return _cancelTokens[key]!;
-  }
-
-  /// Cancel a specific request
-  static void cancel(String key) {
-    if (_cancelTokens.containsKey(key)) {
-      _cancelTokens[key]!.cancel('Request cancelled manually');
-      _cancelTokens.remove(key);
-      log('🚫 Request cancelled: ');
-    }
-  }
-
-  /// Cancel all requests
-  static void cancelAll() {
-    _cancelTokens.forEach((key, token) {
-      token.cancel('All requests cancelled');
-      log('🚫 Request cancelled: ');
-    });
-    _cancelTokens.clear();
-  }
-
-  /// Remove token after request completes
-  static void removeToken(String key) {
-    _cancelTokens.remove(key);
-  }
-
-  /// Check if a request is cancelled
-  static bool isCancelled(String key) {
-    return _cancelTokens[key]?.isCancelled ?? false;
-  }
-}
 
 
 

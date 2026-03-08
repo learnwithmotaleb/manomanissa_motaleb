@@ -113,6 +113,41 @@ class Strings {
   static const String oCal = "0 Cal";
   static const String threeThousandCal = "3,000 Cal";
 
+  /// Blyn / FAQ Screen
+  static const String aiAssistant = "AI Assistant";
+  static const String askAiAssistantBlyn = "Ask the AI Assistant Blyn";
+  static const String faq1 = "How does Blyn work?";
+  static const String faq2 = "What data is recorded?";
+  static const String faq3 = "How do I log steps?";
+  static const String faq4 = "How do I cancel my Subscription?";
+  static const String faq5 = "I'm not receiving notification!";
+  static const String faqAnswer = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.\n\nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.";
 
+
+  /// AI Chat Screen
+  static const String newChat = "New Chat";
+  static const String aksBlyn = "Aks Blyn";
+  static const String helloMessage = "Hello !";
+  static const String blynWelcomeMessage = "Ask me your questions,\nI'm here to help you";
+
+
+  /// Settings Screen
+  static const String editProfile = "Edit Profile";
+  static const String language = "Language";
+  static const String goals = "Goals";
+  static const String healthConditions = "Health Conditions";
+  static const String security = "Security";
+  static const String subscription = "Subscription";
+  static const String about = "About";
+  static const String logOut = "Log Out";
+
+  /// Language Screen
+  static const String languageLangue = "Language / langue";
+  static const String english = "English";
+
+  /// Edit Profile Screen
+  static const String editProfile2 = "Edit Profile";
+  static const String updateProfile = "Update Profile";
+  static const String gender = "Female";
 
 }
