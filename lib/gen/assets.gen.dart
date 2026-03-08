@@ -21,6 +21,12 @@ class $AssetsDummyGen {
   /// File path: assets/dummy/Frame 2147229116.svg
   String get frame2147229116Svg => 'assets/dummy/Frame 2147229116.svg';
 
+  /// File path: assets/dummy/Frame.png
+  AssetGenImage get frame => const AssetGenImage('assets/dummy/Frame.png');
+
+  /// File path: assets/dummy/aann.gif
+  AssetGenImage get aann => const AssetGenImage('assets/dummy/aann.gif');
+
   /// File path: assets/dummy/bg.png
   AssetGenImage get bg => const AssetGenImage('assets/dummy/bg.png');
 
@@ -45,6 +51,8 @@ class $AssetsDummyGen {
   List<dynamic> get values => [
     frame2147229116Png,
     frame2147229116Svg,
+    frame,
+    aann,
     bg,
     button,
     carecterf,
@@ -57,14 +65,35 @@ class $AssetsDummyGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Chat_Check.png
+  AssetGenImage get chatCheck =>
+      const AssetGenImage('assets/icons/Chat_Check.png');
+
+  /// File path: assets/icons/Frame.png
+  AssetGenImage get frame => const AssetGenImage('assets/icons/Frame.png');
+
   /// File path: assets/icons/Group.png
   AssetGenImage get group => const AssetGenImage('assets/icons/Group.png');
+
+  /// File path: assets/icons/ai 1.png
+  AssetGenImage get ai1 => const AssetGenImage('assets/icons/ai 1.png');
+
+  /// File path: assets/icons/home-1 [Neaticons].png
+  AssetGenImage get home1Neaticons =>
+      const AssetGenImage('assets/icons/home-1 [Neaticons].png');
 
   /// File path: assets/icons/q.png
   AssetGenImage get q => const AssetGenImage('assets/icons/q.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [group, q];
+  List<AssetGenImage> get values => [
+    chatCheck,
+    frame,
+    group,
+    ai1,
+    home1Neaticons,
+    q,
+  ];
 }
 
 class Assets {

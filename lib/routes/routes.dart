@@ -1,3 +1,11 @@
+import '../bind/setting_binding.dart';
+import '../views/setting/screen/setting_screen.dart';
+import '../bind/blyn_binding.dart';
+import '../views/blyn/screen/blyn_screen.dart';
+import '../bind/check_binding.dart';
+import '../views/check/screen/check_screen.dart';
+import '../bind/home_binding.dart';
+import '../views/home/screen/home_screen.dart';
 import '../bind/profile_setup_binding.dart';
 import '../views/profile_setup/screen/profile_setup_screen.dart';
 import '../bind/verification_binding.dart';
@@ -29,6 +37,10 @@ part 'pages.dart';
 
 class Routes {
   static var list = RoutePageList.list;
+static const settingScreen = '/settingScreen';
+static const blynScreen = '/blynScreen';
+static const checkScreen = '/checkScreen';
+static const homeScreen = '/homeScreen';
 static const profile_setupScreen = '/profile_setupScreen';
 static const verificationScreen = '/verificationScreen';
 static const confirmScreen = '/confirmScreen';

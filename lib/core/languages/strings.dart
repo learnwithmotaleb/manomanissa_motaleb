@@ -66,5 +66,15 @@ class Strings {
   static const String enterYourName = "Enter your name";
   static const String alreadyHaveAccount = "I already have an account ";
 
+  /// Navigation
+  static const String home = "Home";
+  static const String checkIn = "Check-In";
+  static const String blyn = "Blyn";
+  static const String settings = "Settings";
+
+  static const String hello = "Hello,";
+  static const String yourName = "[Your name]";
+  static const String todaysScore = "Today's Score: 78/100";
+
 
 }

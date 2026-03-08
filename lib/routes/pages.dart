@@ -4,6 +4,26 @@ class RoutePageList {
   static var list = [
     //Page Route List
 GetPage(
+    name: Routes.settingScreen,
+    page: () => const SettingScreen(),
+    binding: SettingBinding(),
+  ),
+GetPage(
+    name: Routes.blynScreen,
+    page: () => const BlynScreen(),
+    binding: BlynBinding(),
+  ),
+GetPage(
+    name: Routes.checkScreen,
+    page: () => const CheckScreen(),
+    binding: CheckBinding(),
+  ),
+GetPage(
+    name: Routes.homeScreen,
+    page: () => const HomeScreen(),
+    binding: HomeBinding(),
+  ),
+GetPage(
     name: Routes.profile_setupScreen,
     page: () => const ProfileSetupScreen(),
     binding: ProfileSetupBinding(),

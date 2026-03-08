@@ -1,14 +1,8 @@
 import '../../../core/utils/basic_import.dart';
 class NavigationController extends GetxController {
+  final currentIndex = 0.obs;
 
-
-
-
-
-
-
-
-
-
-
+  void changePage(int index) {
+    currentIndex.value = index;
+  }
 }
