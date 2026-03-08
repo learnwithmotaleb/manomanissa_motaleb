@@ -1,103 +1,5 @@
 import '../utils/basic_import.dart';
-import 'loading_widget.dart';
 
-import '../utils/basic_import.dart';
-import 'loading_widget.dart';
-
-// class GlowOutlineButton extends StatelessWidget {
-//   final String title;
-//   final VoidCallback onPressed;
-//   final double? width;
-//   final double? height;
-//   final double? fontSize;
-//   final Color glowColor;
-//   final Color textColor;
-//   final bool isLoading;
-//
-//   const GlowOutlineButton({
-//     super.key,
-//     required this.title,
-//     required this.onPressed,
-//     this.width,
-//     this.height,
-//     this.fontSize,
-//     this.glowColor = const Color(0xFF039CE0),
-//     this.textColor = Colors.white,
-//     this.isLoading = false,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: isLoading ? null : onPressed,
-//       child: CustomPaint(
-//         painter: _GlowBorderPainter(glowColor: glowColor),
-//         child: Container(
-//           width: width ?? double.infinity,
-//           height: height ?? Dimensions.buttonHeight,
-//           color: Colors.transparent,
-//           child: isLoading
-//               ? Center(
-//             child: SizedBox(
-//               width: 20.h,
-//               height: 20.h,
-//               child: CircularProgressIndicator(
-//                 strokeWidth: 2,
-//                 color: glowColor,
-//               ),
-//             ),
-//           )
-//               : Center(
-//             child: TextWidget(
-//               title,
-//               fontSize: fontSize ?? Dimensions.titleMedium,
-//               fontWeight: FontWeight.w500,
-//               color: textColor,
-//               textAlign: TextAlign.center,
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-//
-// class _GlowBorderPainter extends CustomPainter {
-//   final Color glowColor;
-//
-//   _GlowBorderPainter({required this.glowColor});
-//
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     final rect = RRect.fromRectAndRadius(
-//       Offset.zero & size,
-//       const Radius.circular(50),
-//     );
-//
-//     final paint = Paint()
-//       ..shader = LinearGradient(
-//         colors: [
-//           glowColor.withOpacity(0.15),
-//           glowColor,
-//           glowColor.withOpacity(0.15),
-//         ],
-//         begin: Alignment.centerLeft,
-//         end: Alignment.centerRight,
-//       ).createShader(Offset.zero & size)
-//       ..style = PaintingStyle.stroke
-//       ..strokeWidth = 1.8;
-//
-//     canvas.drawRRect(rect, paint);
-//   }
-//
-//   @override
-//   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-// }
-
-
-
-import '../utils/basic_import.dart';
-import 'loading_widget.dart';
 
 class GlowOutlineButton extends StatelessWidget {
   final String title;
@@ -129,34 +31,31 @@ class GlowOutlineButton extends StatelessWidget {
         painter: _GlowBorderPainter(glowColor: glowColor),
         child: Container(
           width: width ?? double.infinity,
-          height: height ?? Dimensions.buttonHeight,
+          height: height ?? Dimensions.buttonHeight * 0.95,
+          padding: EdgeInsets.zero,
           color: Colors.transparent,
+          alignment: Alignment.center,
           child: isLoading
-              ? Center(
-            child: SizedBox(
-              width: 20.h,
-              height: 20.h,
-              child: CircularProgressIndicator(
-                strokeWidth: 2,
-                color: glowColor,
-              ),
+              ? SizedBox(
+            width: 20.h,
+            height: 20.h,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: glowColor,
             ),
           )
-              : Center(
-            child: TextWidget(
-              title,
-              fontSize: fontSize ?? Dimensions.titleMedium,
-              fontWeight: FontWeight.w500,
-              color: textColor,
-              textAlign: TextAlign.center,
-            ),
+              : TextWidget(
+            title,
+            fontSize: fontSize ?? Dimensions.titleMedium * 1.1,
+            fontWeight: FontWeight.w700,
+            color: textColor,
+            textAlign: TextAlign.center,
           ),
         ),
       ),
     );
   }
 }
-
 class _GlowBorderPainter extends CustomPainter {
   final Color glowColor;
 
@@ -223,5 +122,66 @@ class RPSCustomPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
+  }
+}
+
+
+
+class PrimaryButtonWidget extends StatelessWidget {
+  final String title;
+  final VoidCallback onPressed;
+  final double? width;
+  final double? height;
+  final double? fontSize;
+  final Color textColor;
+  final bool isLoading;
+
+  const PrimaryButtonWidget({
+    super.key,
+    required this.title,
+    required this.onPressed,
+    this.width,
+    this.height,
+    this.fontSize,
+    this.textColor = Colors.white,
+    this.isLoading = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: isLoading ? null : onPressed,
+      child: SizedBox(
+        width: width ?? double.infinity,
+        height: height ?? Dimensions.buttonHeight * 1.4,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned.fill(
+              child: Image.asset(
+                Assets.dummy.button.path,
+                fit: BoxFit.fill,
+              ),
+            ),
+            isLoading
+                ? SizedBox(
+              width: 20.h,
+              height: 20.h,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: textColor,
+              ),
+            )
+                : TextWidget(
+              title,
+              fontSize: fontSize ?? Dimensions.titleMedium * 1.1,
+              fontWeight: FontWeight.w600,
+              color: textColor,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

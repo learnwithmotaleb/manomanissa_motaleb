@@ -7,7 +7,8 @@ class CustomColors {
   static const Color blueColor = Color(0xFF2323FF);
 
   // Light Theme Colors
-  static const Color primary = Color(0xFF16A34A);
+  static const Color primary = Color(0xFF039CE0);
+  static const Color primaryTextColor = Color(0xFF6CB0EB);
   static const Color secondary = Color(0xFF065F46);
   static const Color secondaryDarkText = Color(0xFF64748B);
   static const Color grayShade = Color(0xFF777676);
@@ -24,7 +25,7 @@ class CustomColors {
   static Color cardDark = const Color(0xFF252525);
   static Color textPrimaryDark = const Color(0xFFE0E0E0);
   static Color textSecondaryDark = const Color(0xFFB0B0B0);
-  static Color borderDark = const Color(0xFF3A3A3A);
+  static Color borderDark = const Color(0xFF385A7A);
   static Color dividerDark = const Color(0xFF2C2C2C);
 
   // Status Colors

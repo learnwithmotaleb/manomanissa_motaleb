@@ -6,32 +6,87 @@ class WelcomeScreenMobile extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: "Welcome"),
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: Dimensions.defaultHorizontalSize,),
+            padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.defaultHorizontalSize * 0.9,
+            ),
             child: Column(
-              mainAxisAlignment: mainCenter,
               children: [
-                // TextWidget(
-                //   'Welcome to\nHealth Genius',
-                //   textAlign: TextAlign.center,
-                //   fontSize: Dimensions.titleLarge,
-                // ),
-                // Space.height.v5,
-                // TextWidget(
-                //   'Improve your daily file with simple goals and Avatar that evolves with you',
-                //   textAlign: TextAlign.center,
-                //   padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
-                //   fontSize: Dimensions.titleSmall,
-                // ),
-                //
-                // GlowOutlineButton(title: 'Log in', onPressed: () {}),
-                //
-                // Image.asset(Assets.dummy.frame2147229116Png.path),
+                Row(
+                  mainAxisAlignment: mainSpaceBet,
+                  children: [
+                    SizedBox(),
+                    ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(
+                        Dimensions.radius * 2,
+                      ),
+                      child: BlurWidget(
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2.5,
+                              color: CustomColors.borderDark,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              Dimensions.radius * 2,
+                            ),
+                          ),
+                          height: 50.h,
+                          width: 140.w,
+                          child: Wrap(
+                            spacing: 10.w,
+                            alignment: WrapAlignment.center,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Image.asset(Assets.icons.group.path),
+                              TextWidget(Strings.french),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
 
-                HistoryChartWidget()
+                Space.height.v100,
+                Space.height.v100,
+                Space.height.v30,
+                TextWidget(
+                  Strings.welcomeTitle,
+                  textAlign: TextAlign.center,
+                  fontSize: Dimensions.titleLarge,
+                ),
+                Space.height.v5,
+                TextWidget(
+                  Strings.welcomeDescription,
+                  textAlign: TextAlign.center,
+                  padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+                  fontSize: Dimensions.titleSmall,
+                ),
+                Space.height.v15,
+
+                PrimaryButtonWidget(title: Strings.logIn, onPressed: () {}),
+                PrimaryButtonWidget(
+                  title: Strings.createAnAccount,
+                  onPressed: () {},
+                ),
+
+                Space.height.v40,
+
+                Wrap(
+                  spacing: 8.w,
+
+                  children: [
+                    Image.asset(Assets.icons.q.path),
+                    TextWidget(
+                      Strings.frequentlyAskedQuestions,
+                      color: CustomColors.primaryTextColor,
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -41,6 +96,40 @@ class WelcomeScreenMobile extends GetView<WelcomeController> {
   }
 }
 
+class BlurWidget extends StatelessWidget {
+  final Widget child;
+  final double? width;
+  final double? height;
+  final double blurAmount;
+  final Color overlayColor;
+  final BorderRadius? borderRadius;
+  final EdgeInsetsGeometry? padding;
 
-// history_chart_widget.dart
+  const BlurWidget({
+    super.key,
+    required this.child,
+    this.width,
+    this.height,
+    this.blurAmount = 10,
+    this.overlayColor = Colors.transparent,
+    this.borderRadius,
+    this.padding,
+  });
 
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: borderRadius ?? BorderRadius.circular(Dimensions.radius),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: blurAmount, sigmaY: blurAmount),
+        child: Container(
+          width: width,
+          height: height,
+          padding: padding,
+          color: overlayColor,
+          child: child,
+        ),
+      ),
+    );
+  }
+}

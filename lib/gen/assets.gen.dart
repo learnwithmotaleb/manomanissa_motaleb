@@ -24,14 +24,46 @@ class $AssetsDummyGen {
   /// File path: assets/dummy/bg.png
   AssetGenImage get bg => const AssetGenImage('assets/dummy/bg.png');
 
+  /// File path: assets/dummy/button.PNG
+  AssetGenImage get button => const AssetGenImage('assets/dummy/button.PNG');
+
+  /// File path: assets/dummy/carecterf.gif
+  AssetGenImage get carecterf =>
+      const AssetGenImage('assets/dummy/carecterf.gif');
+
+  /// File path: assets/dummy/splashgif.gif
+  AssetGenImage get splashgif =>
+      const AssetGenImage('assets/dummy/splashgif.gif');
+
   /// List of all assets
-  List<dynamic> get values => [frame2147229116Png, frame2147229116Svg, bg];
+  List<dynamic> get values => [
+    frame2147229116Png,
+    frame2147229116Svg,
+    bg,
+    button,
+    carecterf,
+    splashgif,
+  ];
+}
+
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/Group.png
+  AssetGenImage get group => const AssetGenImage('assets/icons/Group.png');
+
+  /// File path: assets/icons/q.png
+  AssetGenImage get q => const AssetGenImage('assets/icons/q.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [group, q];
 }
 
 class Assets {
   const Assets._();
 
   static const $AssetsDummyGen dummy = $AssetsDummyGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
 }
 
 class AssetGenImage {

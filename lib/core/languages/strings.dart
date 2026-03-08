@@ -1,5 +1,6 @@
 class Strings {
   static String appName = "";
+
   static const String error = "Error";
   static const String enter = "Enter";
   static const String resend = "Resend";
@@ -15,7 +16,20 @@ class Strings {
   static const String pleaseFillOutTheField = "Please Fill Out The Field";
   static const String noInternetConnection = "No Internet Connection";
   static const String connectionRestored = "Connection Restored";
-  static const String youAreBackOnline = "You are back online. All features are available again.";
+  static const String youAreBackOnline =
+      "You are back online. All features are available again.";
 
+  /// Welcome Screen
+  static const String welcome = "Welcome";
+
+  static const String welcomeTitle =
+      "Welcome to\nHealth Genius";
+
+  static const String welcomeDescription =
+      "Improve your daily file with simple goals and Avatar that evolves with you";
+
+  static const String logIn = "Log in";
+  static const String french = "French";
+  static const String createAnAccount = "Create an account";
+  static const String frequentlyAskedQuestions = "Frequently Asked Questions";
 }
-
