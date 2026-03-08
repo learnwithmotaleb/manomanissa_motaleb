@@ -7,6 +7,8 @@ class LoginController extends GetxController {
   final isLoading = false.obs;
 
 
+  final GlobalKey<FormState> formKey = GlobalKey();
+
 
   @override
   void onClose() {

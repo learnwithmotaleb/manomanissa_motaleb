@@ -15,16 +15,6 @@ class HomeInfoCard extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Positioned(
-            top: size.height * 0.00,
-            bottom: 5,
-            child: Image.asset(
-              Assets.dummy.aann.path,
-              height: size.height * 0.40,
-              fit: BoxFit.contain,
-            ),
-          ),
-
-          Positioned(
             bottom: size.height * 0.12,
             left: 0,
             child: SizedBox(
