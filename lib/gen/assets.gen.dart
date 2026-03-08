@@ -82,6 +82,9 @@ class $AssetsIconsGen {
   AssetGenImage get home1Neaticons =>
       const AssetGenImage('assets/icons/home-1 [Neaticons].png');
 
+  /// File path: assets/icons/orange.png
+  AssetGenImage get orange => const AssetGenImage('assets/icons/orange.png');
+
   /// File path: assets/icons/q.png
   AssetGenImage get q => const AssetGenImage('assets/icons/q.png');
 
@@ -92,6 +95,7 @@ class $AssetsIconsGen {
     group,
     ai1,
     home1Neaticons,
+    orange,
     q,
   ];
 }
