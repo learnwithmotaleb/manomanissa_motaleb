@@ -1,5 +1,7 @@
 import '../../../core/utils/basic_import.dart';
+import '../../welcome/screen/welcome_screen.dart';
 import '../controller/check_controller.dart';
+import '../widget/check_slider_widget.dart';
 
 part 'check_screen_mobile.dart';
 

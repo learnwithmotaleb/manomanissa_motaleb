@@ -88,5 +88,31 @@ class Strings {
   static const String sevenDays = "7 Day's";
   static const String thirtyDays = "30 Day's";
 
+  /// Sleep Screen
+  static const String sleepHistory = "History";
+  static const String suggestionOfTheDay = "Suggestion of the day";
+  static const String sleepHours = "6/8 hours";
+  static const String steps = "6,000/8,000 Steps";
+  static const String calories = "1,600/2,500 calories";
+  static const String verres = "6/8 Verres";
+  static const String sleepTip1 = "Improving your sleep can boost your energy and focus";
+  static const String sleepTip2 = "Better sleep tonight starts with an earlier bedtime";
+  static const String sleepTip3 = "A calm evening routine can improve sleep quality";
+  static const String belowTarget = "You're below your target. One earlier bedtime tonight = better focus and recovery tomorrow.";
+
+
+  /// Check-In Screen
+  static const String checkIn2 = "Check- In";
+  static const String confirm = "Confirm";
+  static const String oHour = "0 Hour";
+  static const String twelveHours = "12 Hours";
+  static const String oVerres = "0 Verres";
+  static const String fiveLitres = "5 Litres";
+  static const String oSteps = "0 Steps";
+  static const String fifteenThousandSteps = "15,000 Steps";
+  static const String oCal = "0 Cal";
+  static const String threeThousandCal = "3,000 Cal";
+
+
 
 }

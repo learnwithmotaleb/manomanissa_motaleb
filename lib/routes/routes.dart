@@ -1,3 +1,13 @@
+import '../bind/nutrition_binding.dart';
+import '../views/nutrition/screen/nutrition_screen.dart';
+import '../bind/activity_binding.dart';
+import '../views/activity/screen/activity_screen.dart';
+import '../bind/hydration_binding.dart';
+import '../views/hydration/screen/hydration_screen.dart';
+import '../bind/sleep_binding.dart';
+import '../views/sleep/screen/sleep_screen.dart';
+import '../bind/notification_binding.dart';
+import '../views/notification/screen/notification_screen.dart';
 import '../bind/setting_binding.dart';
 import '../views/setting/screen/setting_screen.dart';
 import '../bind/blyn_binding.dart';
@@ -37,6 +47,11 @@ part 'pages.dart';
 
 class Routes {
   static var list = RoutePageList.list;
+static const nutritionScreen = '/nutritionScreen';
+static const activityScreen = '/activityScreen';
+static const hydrationScreen = '/hydrationScreen';
+static const sleepScreen = '/sleepScreen';
+static const notificationScreen = '/notificationScreen';
 static const settingScreen = '/settingScreen';
 static const blynScreen = '/blynScreen';
 static const checkScreen = '/checkScreen';

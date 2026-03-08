@@ -33,20 +33,26 @@ class HomeHeaderWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              padding: EdgeInsets.all(10.r),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: CustomColors.primary,
-                  width: 1.5,
+            GestureDetector(
+              onTap: () {
+
+                Get.toNamed(Routes.notificationScreen);
+              },
+              child: Container(
+                padding: EdgeInsets.all(10.r),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: CustomColors.primary,
+                    width: 1.5,
+                  ),
+                  color: Colors.black.withOpacity(0.3),
                 ),
-                color: Colors.black.withOpacity(0.3),
-              ),
-              child: Icon(
-                Icons.notifications_outlined,
-                color: CustomColors.primary,
-                size: Dimensions.iconSizeLarge,
+                child: Icon(
+                  Icons.notifications_outlined,
+                  color: CustomColors.primary,
+                  size: Dimensions.iconSizeLarge,
+                ),
               ),
             ),
           ],
