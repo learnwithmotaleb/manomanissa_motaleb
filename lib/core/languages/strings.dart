@@ -75,11 +75,18 @@ class Strings {
   static const String hello = "Hello,";
   static const String yourName = "[Your name]";
   static const String todaysScore = "Today's Score: 78/100";
-  
+
   static const String sleep = "Sleep";
+  static const String share = "Share";
+  static const String yourBonusLevel = "Your bonus level is excellent";
   static const String hydration = "Hydration";
   static const String activity = "Activity";
   static const String nutrition = "Nutrition";
+
+  /// Progression Widget
+  static const String progression = "Progression";
+  static const String sevenDays = "7 Day's";
+  static const String thirtyDays = "30 Day's";
 
 
 }
