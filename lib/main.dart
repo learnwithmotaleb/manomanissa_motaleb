@@ -6,13 +6,11 @@ import 'core/widgets/offline_widget.dart';
 import 'initial.dart';
 import 'views/splash/screen/splash_screen.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Initial.init();
   Get.put(NetworkChecker());
   Get.put(SplashController());
-
 
   final hasInternet = await NetworkManager.hasConnection();
   bool? lastStatus = hasInternet;
@@ -48,10 +46,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => GetMaterialApp(
-         // translations: Languages(),
+        // translations: Languages(),
         // locale: Locale(savedLang, savedLang == 'en' ? 'US' : 'GK'),
         // fallbackLocale: Locale('en', 'US'),
-        
         debugShowCheckedModeBanner: false,
         home: hasInternet ? const SplashScreen() : const OfflineWidget(),
         title: Strings.appName,
@@ -59,7 +56,7 @@ class MyApp extends StatelessWidget {
         darkTheme: Themes.dark,
         getPages: Routes.list,
         defaultTransition: Transition.cupertino,
-        transitionDuration: const Duration(milliseconds: 400),
+        transitionDuration: const Duration(milliseconds: 300),
         themeMode: themes.currentTheme,
         // themeMode: ThemeMode.light,
 
@@ -76,10 +73,7 @@ class MyApp extends StatelessWidget {
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        Image.asset(
-                          Assets.dummy.bg.path,
-                          fit: BoxFit.cover,
-                        ),
+                        Image.asset(Assets.dummy.bg.path, fit: BoxFit.cover),
                         widget!,
                       ],
                     ),

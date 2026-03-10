@@ -22,7 +22,7 @@ class HomeInfoCard extends StatelessWidget {
               child: SizedBox(
                 width: size.width * 0.38,
                 child: BlurWidget(
-                  blurAmount: 1.3,
+                  blurAmount: 0.8,
                   child: StatCardWidget(
                     label: Strings.sleep,
                     value: "7h 45m",
@@ -52,7 +52,7 @@ class HomeInfoCard extends StatelessWidget {
               child: SizedBox(
                 width: size.width * 0.38,
                 child: BlurWidget(
-                  blurAmount: 1.3,
+                  blurAmount: 0.8,
                   child: StatCardWidget(
                     label: Strings.hydration,
                     value: "2.5L",
@@ -83,7 +83,7 @@ class HomeInfoCard extends StatelessWidget {
               child: SizedBox(
                 width: size.width * 0.38,
                 child: BlurWidget(
-                  blurAmount: 1.3,
+                  blurAmount: 0.8,
                   child: StatCardWidget(
                     label: Strings.activity,
                     value: "4230",
@@ -114,7 +114,7 @@ class HomeInfoCard extends StatelessWidget {
               child: SizedBox(
                 width: size.width * 0.38,
                 child: BlurWidget(
-                  blurAmount: 1.3,
+                  blurAmount: 0.8,
                   child: StatCardWidget(
                     label: Strings.nutrition,
                     value: "1400",

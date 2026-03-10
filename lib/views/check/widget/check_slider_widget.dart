@@ -98,13 +98,13 @@ class CheckSliderWidget extends StatelessWidget {
                 TextWidget(
                   minLabel,
                   fontSize: Dimensions.labelSmall,
-                  color: CustomColors.whiteColor.withOpacity(0.5),
+                  color: CustomColors.primary,
                 ),
-                TextWidget(
-                  maxLabel,
-                  fontSize: Dimensions.labelSmall,
-                  color: CustomColors.whiteColor.withOpacity(0.5),
-                ),
+                // TextWidget(
+                //   maxLabel,
+                //   fontSize: Dimensions.labelSmall,
+                //   color: CustomColors.whiteColor.withOpacity(0.5),
+                // ),
               ],
             ),
           ],

@@ -6,7 +6,7 @@ class GoalScreenScreenMobile extends GetView<GoalScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: "GoalScreen"),
+      appBar: CommonAppBar(title: ""),
       body: SafeArea(
         child: ListView(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

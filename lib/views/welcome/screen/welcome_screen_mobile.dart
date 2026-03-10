@@ -68,7 +68,10 @@ class WelcomeScreenMobile extends GetView<WelcomeController> {
                 ),
                 Space.height.v15,
 
-                PrimaryButtonWidget(title: Strings.logIn, onPressed: () => Get.toNamed(Routes.loginScreen),),
+                PrimaryButtonWidget(
+                  title: Strings.logIn,
+                  onPressed: () => Get.toNamed(Routes.loginScreen),
+                ),
                 PrimaryButtonWidget(
                   title: Strings.createAnAccount,
                   onPressed: () {
@@ -120,6 +123,15 @@ class BlurWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (blurAmount <= 0) {
+      return Container(
+        width: width,
+        height: height,
+        padding: padding,
+        color: overlayColor,
+        child: child,
+      );
+    }
     return ClipRRect(
       borderRadius: borderRadius ?? BorderRadius.circular(Dimensions.radius),
       child: BackdropFilter(

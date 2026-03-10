@@ -109,29 +109,8 @@ class HealthDetailWidget extends StatelessWidget {
             ),
           ),
         ),
-        Space.height.v20,
-
         // ─── Info Card ────────────────────────────────────
-        BlurWidget(
-          blurAmount: 2,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius * 1.5),
-              color: Colors.black.withOpacity(0.4),
-              border: Border.all(
-                color: const Color(0xFF039CE0).withOpacity(0.2),
-                width: 1.2,
-              ),
-            ),
-            child: TextWidget(
-              infoText,
-              fontSize: Dimensions.bodyMedium,
-              color: CustomColors.whiteColor.withOpacity(0.85),
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
+
         Space.height.v30,
 
         // ─── History Chart ────────────────────────────────
