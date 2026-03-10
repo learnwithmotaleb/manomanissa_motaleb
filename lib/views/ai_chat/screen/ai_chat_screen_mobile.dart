@@ -6,14 +6,219 @@ class AiChatScreenMobile extends GetView<AiChatController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: _HistoryDrawer(),
       body: SafeArea(
+        child: Builder(
+          builder: (context) => Column(
+            children: [
+              Padding(
+                padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+                child: Row(
+                  mainAxisAlignment: mainSpaceBet,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Get.back(),
+                      child: Container(
+                        padding: EdgeInsets.all(10.r),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: CustomColors.primary, width: 1.5),
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                        child: Icon(Icons.arrow_back_ios, color: CustomColors.primary, size: 16.h),
+                      ),
+                    ),
+
+                    GestureDetector(
+                      onTap: controller.onNewChat,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Dimensions.radius * 3),
+                          border: Border.all(color: CustomColors.primary, width: 1.5),
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                        child: Row(
+                          children: [
+                            TextWidget(Strings.newChat, fontSize: Dimensions.bodyMedium, color: CustomColors.whiteColor),
+                            Space.width.v5,
+                            Icon(Icons.add_circle_outline, color: CustomColors.primary, size: 18.h),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // Menu Button — drawer open করবে
+                    GestureDetector(
+                      onTap: () => Scaffold.of(context).openEndDrawer(),
+                      child: Container(
+                        padding: EdgeInsets.all(10.r),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: CustomColors.primary, width: 1.5),
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                        child: Icon(Icons.menu, color: CustomColors.primary, size: 18.h),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Expanded(
+                child: Obx(
+                      () => controller.messages.isEmpty
+                      ? Column(
+                    children: [
+                      Space.height.v100,
+                      Row(
+                        children: [
+                          Padding(
+                            padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+                            child: Image.asset(Assets.dummy.welcom.path),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                      : ListView.builder(
+                    controller: controller.scrollController,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.horizontalSize,
+                      vertical: 10.h,
+                    ),
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: controller.messages.length,
+                    itemBuilder: (context, index) {
+                      final msg = controller.messages[index];
+                      return _ChatBubble(
+                        message: msg['text']!,
+                        isUser: msg['isUser'] == 'true',
+                      );
+                    },
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.horizontalSize,
+                  vertical: 16.h,
+                ),
+                child: BlurWidget(
+                  blurAmount: 3,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius * 3),
+                      color: Colors.black.withOpacity(0.45),
+                      border: Border.all(
+                        color: CustomColors.primary.withOpacity(0.4),
+                        width: 1.4,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: controller.inputController,
+                            style: TextStyle(color: CustomColors.whiteColor, fontSize: Dimensions.bodyMedium),
+                            cursorColor: CustomColors.primary,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: Strings.aksBlyn,
+                              hintStyle: TextStyle(
+                                color: CustomColors.whiteColor.withOpacity(0.4),
+                                fontSize: Dimensions.bodyMedium,
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: controller.onSend,
+                          child: Container(
+                            padding: EdgeInsets.all(8.r),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: CustomColors.primary, width: 1.5),
+                            ),
+                            child: Icon(Icons.arrow_upward, color: CustomColors.primary, size: 18.h),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── History Drawer ───────────────────────────────────────
+class _HistoryDrawer extends GetView<AiChatController> {
+  const _HistoryDrawer();
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      width: MediaQuery.of(context).size.width * 0.85,
+      backgroundColor: const Color(0xFF050D18),
+      child: SafeArea(
         child: Column(
+          crossAxisAlignment: crossStart,
           children: [
             Padding(
-              padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.horizontalSize,
+                vertical: 16.h,
+              ),
               child: Row(
-                mainAxisAlignment: mainSpaceBet,
                 children: [
+                  // Search Field
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimensions.radius * 3),
+                        border: Border.all(
+                          color: CustomColors.primary.withOpacity(0.4),
+                          width: 1.4,
+                        ),
+                        color: Colors.black.withOpacity(0.3),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: controller.searchController,
+                              style: TextStyle(
+                                color: CustomColors.whiteColor,
+                                fontSize: Dimensions.bodyMedium,
+                              ),
+                              cursorColor: CustomColors.primary,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                isDense: true,
+                                hintText: "Search",
+                                hintStyle: TextStyle(
+                                  color: CustomColors.whiteColor.withOpacity(0.4),
+                                  fontSize: Dimensions.bodyMedium,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Icon(Icons.search, color: CustomColors.primary, size: 20.h),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Space.width.v10,
+
+                  // Close Button
                   GestureDetector(
                     onTap: () => Get.back(),
                     child: Container(
@@ -21,178 +226,53 @@ class AiChatScreenMobile extends GetView<AiChatController> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: CustomColors.primary,
-                          width: 1.5,
+                          color: CustomColors.primary.withOpacity(0.4),
+                          width: 1.4,
                         ),
-                        color: Colors.black.withOpacity(0.3),
                       ),
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        color: CustomColors.primary,
-                        size: 16.h,
-                      ),
-                    ),
-                  ),
-
-                  // New Chat Button
-                  GestureDetector(
-                    onTap: controller.onNewChat,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 14.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          Dimensions.radius * 3,
-                        ),
-                        border: Border.all(
-                          color: CustomColors.primary,
-                          width: 1.5,
-                        ),
-                        color: Colors.black.withOpacity(0.3),
-                      ),
-                      child: Row(
-                        children: [
-                          TextWidget(
-                            Strings.newChat,
-                            fontSize: Dimensions.bodyMedium,
-                            color: CustomColors.whiteColor,
-                          ),
-                          Space.width.v5,
-                          Icon(
-                            Icons.add_circle_outline,
-                            color: CustomColors.primary,
-                            size: 18.h,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  // Menu Button
-                  GestureDetector(
-                    onTap: controller.onMenu,
-                    child: Container(
-                      padding: EdgeInsets.all(10.r),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: CustomColors.primary,
-                          width: 1.5,
-                        ),
-                        color: Colors.black.withOpacity(0.3),
-                      ),
-                      child: Icon(
-                        Icons.menu,
-                        color: CustomColors.primary,
-                        size: 18.h,
-                      ),
+                      child: Icon(Icons.close, color: CustomColors.whiteColor, size: 18.h),
                     ),
                   ),
                 ],
               ),
             ),
 
-            Expanded(
-              child: Obx(
-                () => controller.messages.isEmpty
-                    ? Column(
-                        children: [
-                          Space.height.v100,
-                          Row(
-                            children: [
-                              Padding(
-                                padding: Dimensions
-                                    .defaultHorizontalSize
-                                    .edgeHorizontal,
-                                child: Image.asset(Assets.dummy.welcom.path),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    : ListView.builder(
-                        controller: controller.scrollController,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Dimensions.horizontalSize,
-                          vertical: 10.h,
-                        ),
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: controller.messages.length,
-                        itemBuilder: (context, index) {
-                          final msg = controller.messages[index];
-                          return _ChatBubble(
-                            message: msg['text']!,
-                            isUser: msg['isUser'] == 'true',
-                          );
-                        },
-                      ),
+            // ─── History Title ────────────────────────────
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize),
+              child: TextWidget(
+                "History",
+                fontSize: Dimensions.titleMedium,
+                fontWeight: FontWeight.w700,
+                color: CustomColors.whiteColor,
               ),
             ),
+            Space.height.v15,
 
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.horizontalSize,
-                vertical: 16.h,
-              ),
-              child: BlurWidget(
-                blurAmount: 3,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 6.h,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimensions.radius * 3),
-                    color: Colors.black.withOpacity(0.45),
-                    border: Border.all(
-                      color: CustomColors.primary.withOpacity(0.4),
-                      width: 1.4,
+            // ─── History List ─────────────────────────────
+            Expanded(
+              child: Obx(() => ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: Dimensions.horizontalSize),
+                physics: const BouncingScrollPhysics(),
+                itemCount: controller.chatHistory.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      controller.loadHistory(index);
+                      Get.back();
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 18.h),
+                      child: TextWidget(
+                        controller.chatHistory[index],
+                        fontSize: Dimensions.bodyMedium,
+                        fontWeight: FontWeight.w400,
+                        color: CustomColors.whiteColor.withOpacity(0.85),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: controller.inputController,
-                          style: TextStyle(
-                            color: CustomColors.whiteColor,
-                            fontSize: Dimensions.bodyMedium,
-                          ),
-                          cursorColor: CustomColors.primary,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: Strings.aksBlyn,
-                            hintStyle: TextStyle(
-                              color: CustomColors.whiteColor.withOpacity(0.4),
-                              fontSize: Dimensions.bodyMedium,
-                            ),
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: controller.onSend,
-                        child: Container(
-                          padding: EdgeInsets.all(8.r),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: CustomColors.primary,
-                              width: 1.5,
-                            ),
-                          ),
-                          child: Icon(
-                            Icons.arrow_upward,
-                            color: CustomColors.primary,
-                            size: 18.h,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                  );
+                },
+              )),
             ),
           ],
         ),
@@ -215,18 +295,13 @@ class _ChatBubble extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(bottom: 12.h),
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-        constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * 0.7,
-        ),
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimensions.radius * 1.5),
           color: isUser
               ? CustomColors.primary.withOpacity(0.2)
               : Colors.black.withOpacity(0.4),
-          border: Border.all(
-            color: CustomColors.primary.withOpacity(0.3),
-            width: 1.2,
-          ),
+          border: Border.all(color: CustomColors.primary.withOpacity(0.3), width: 1.2),
         ),
         child: TextWidget(
           message,

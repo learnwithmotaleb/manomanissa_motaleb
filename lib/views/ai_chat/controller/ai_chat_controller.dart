@@ -26,6 +26,27 @@ class AiChatController extends GetxController {
   void onMenu() {
   }
 
+  final searchController = TextEditingController();
+  final chatHistory = <String>[
+    Strings.faq1,
+    Strings.faq2,
+    Strings.faq3,
+  ].obs;
+
+  void loadHistory(int index) {
+    messages.clear();
+    messages.add({'text': chatHistory[index], 'isUser': 'true'});
+  }
+
+
+  @override
+  void onClose() {
+    inputController.dispose();
+    searchController.dispose();
+    scrollController.dispose();
+    super.onClose();
+  }
+
   void _scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (scrollController.hasClients) {
@@ -38,10 +59,4 @@ class AiChatController extends GetxController {
     });
   }
 
-  @override
-  void onClose() {
-    inputController.dispose();
-    scrollController.dispose();
-    super.onClose();
-  }
 }
