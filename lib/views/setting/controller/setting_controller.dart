@@ -7,11 +7,11 @@ class SettingController extends GetxController {
 
   void onGoals() => Get.toNamed(Routes.goal_screenScreen);
 
-  void onHealthConditions() => Get.toNamed(Routes.goal_screenScreen);
+  void onHealthConditions() => Get.toNamed(Routes.health_conditionScreen);
 
   void onSecurity() => Get.toNamed(Routes.securityScreen);
 
-  void onSubscription() => Get.toNamed(Routes.goal_screenScreen);
+  void onSubscription() {}
 
   void onAbout() => Get.toNamed(Routes.aboutScreen);
 

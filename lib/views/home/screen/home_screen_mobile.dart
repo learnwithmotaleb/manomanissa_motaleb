@@ -18,7 +18,6 @@ class HomeScreenMobile extends GetView<HomeController> {
           Positioned.fill(
             child: Image.asset(Assets.dummy.frame.path, fit: BoxFit.cover),
           ),
-
           Positioned(
             top: size.height * 0.30,
             left: 0,
@@ -33,9 +32,9 @@ class HomeScreenMobile extends GetView<HomeController> {
           ),
 
           CustomScrollView(
-            physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
-            ),
+            // physics: const BouncingScrollPhysics(
+            //   parent: AlwaysScrollableScrollPhysics(),
+            // ),
             slivers: [
               SliverPadding(
                 padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

@@ -1,3 +1,7 @@
+import '../bind/terms_policy_binding.dart';
+import '../views/terms_policy/screen/terms_policy_screen.dart';
+import '../bind/change_password_binding.dart';
+import '../views/change_password/screen/change_password_screen.dart';
 import '../bind/language_binding.dart';
 import '../views/language/screen/language_screen.dart';
 import '../bind/about_binding.dart';
@@ -61,6 +65,8 @@ part 'pages.dart';
 
 class Routes {
   static var list = RoutePageList.list;
+static const terms_policyScreen = '/terms_policyScreen';
+static const change_passwordScreen = '/change_passwordScreen';
 static const languageScreen = '/languageScreen';
 static const aboutScreen = '/aboutScreen';
 static const securityScreen = '/securityScreen';

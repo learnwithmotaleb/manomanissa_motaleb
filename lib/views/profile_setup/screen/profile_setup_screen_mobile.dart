@@ -228,14 +228,14 @@ class _StepThree extends GetView<ProfileSetupController> {
           mainAxisAlignment: mainCenter,
           children: [
             TextWidget(
-              "Health Conditions ",
+              Strings.healthCondition,
               textAlign: TextAlign.center,
               fontSize: Dimensions.titleLarge,
               fontWeight: FontWeight.w700,
               color: CustomColors.whiteColor,
             ),
             TextWidget(
-              "(optional)",
+              "(${Strings.optional})",
               fontSize: Dimensions.bodyMedium,
               color: CustomColors.whiteColor.withOpacity(0.6),
             ),
@@ -315,7 +315,7 @@ class _StepThree extends GetView<ProfileSetupController> {
                         color: CustomColors.primary, size: 20.h),
                     Space.width.v10,
                     TextWidget(
-                      "Add more",
+                     Strings.addMore,
                       fontSize: Dimensions.bodyMedium,
                       color: CustomColors.whiteColor,
                     ),
@@ -349,7 +349,7 @@ class _StepFour extends GetView<ProfileSetupController> {
       children: [
         Space.height.v100,
         TextWidget(
-          "Choose your Character",
+          Strings.chooseYourCharacter,
           textAlign: TextAlign.center,
           fontSize: Dimensions.titleLarge,
           fontWeight: FontWeight.w700,
@@ -453,7 +453,7 @@ class _StepFive extends GetView<ProfileSetupController> {
       children: [
         Space.height.v100,
         TextWidget(
-          "Height & Weight",
+          Strings.heightWeight,
           textAlign: TextAlign.center,
           fontSize: Dimensions.titleLarge,
           fontWeight: FontWeight.w700,
@@ -470,7 +470,7 @@ class _StepFive extends GetView<ProfileSetupController> {
                   child: Column(
                     children: [
                       TextWidget(
-                        "Height",
+                        Strings.height,
                         fontSize: Dimensions.titleSmall,
                         fontWeight: FontWeight.w700,
                         color: CustomColors.whiteColor,
@@ -541,7 +541,7 @@ class _StepFive extends GetView<ProfileSetupController> {
                   child: Column(
                     children: [
                       TextWidget(
-                        "Weight",
+                        Strings.weight,
                         fontSize: Dimensions.titleSmall,
                         fontWeight: FontWeight.w700,
                         color: CustomColors.whiteColor,

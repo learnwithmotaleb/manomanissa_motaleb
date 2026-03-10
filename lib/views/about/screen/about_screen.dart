@@ -1,4 +1,5 @@
 import '../../../core/utils/basic_import.dart';
+import '../../welcome/screen/welcome_screen.dart';
 import '../controller/about_controller.dart';
 
 part 'about_screen_mobile.dart';

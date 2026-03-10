@@ -95,38 +95,40 @@ class AiChatScreenMobile extends GetView<AiChatController> {
             ),
 
             Expanded(
-              child: controller.messages.isEmpty
-                  ? Column(
-                      children: [
-                        Space.height.v100,
-                        Row(
-                          children: [
-                            Padding(
-                              padding: Dimensions
-                                  .defaultHorizontalSize
-                                  .edgeHorizontal,
-                              child: Image.asset(Assets.dummy.welcom.path),
-                            ),
-                          ],
+              child: Obx(
+                () => controller.messages.isEmpty
+                    ? Column(
+                        children: [
+                          Space.height.v100,
+                          Row(
+                            children: [
+                              Padding(
+                                padding: Dimensions
+                                    .defaultHorizontalSize
+                                    .edgeHorizontal,
+                                child: Image.asset(Assets.dummy.welcom.path),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    : ListView.builder(
+                        controller: controller.scrollController,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.horizontalSize,
+                          vertical: 10.h,
                         ),
-                      ],
-                    )
-                  : ListView.builder(
-                      controller: controller.scrollController,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.horizontalSize,
-                        vertical: 10.h,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: controller.messages.length,
+                        itemBuilder: (context, index) {
+                          final msg = controller.messages[index];
+                          return _ChatBubble(
+                            message: msg['text']!,
+                            isUser: msg['isUser'] == 'true',
+                          );
+                        },
                       ),
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: controller.messages.length,
-                      itemBuilder: (context, index) {
-                        final msg = controller.messages[index];
-                        return _ChatBubble(
-                          message: msg['text']!,
-                          isUser: msg['isUser'] == 'true',
-                        );
-                      },
-                    ),
+              ),
             ),
 
             Padding(

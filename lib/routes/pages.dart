@@ -4,6 +4,16 @@ class RoutePageList {
   static var list = [
     //Page Route List
 GetPage(
+    name: Routes.terms_policyScreen,
+    page: () => const TermsPolicyScreen(),
+    binding: TermsPolicyBinding(),
+  ),
+GetPage(
+    name: Routes.change_passwordScreen,
+    page: () => const ChangePasswordScreen(),
+    binding: ChangePasswordBinding(),
+  ),
+GetPage(
     name: Routes.languageScreen,
     page: () => const LanguageScreen(),
     binding: LanguageBinding(),

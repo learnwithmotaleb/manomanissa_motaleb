@@ -36,6 +36,7 @@ class Strings {
   /// Login Screen
   static const String email = "Email";
   static const String enterPassword = "Enter Password";
+  static const String currentPassword = "Current Password";
   static const String forgotPassword = "Forgot Password?";
   static const String iDontHaveAnAccount = "I don't have an account";
   static const String contactSupportHelp = "Contact & support / Help";
@@ -53,6 +54,7 @@ class Strings {
   static const String enterYourSIzDIGitCode = "Enter your 6-digit code";
   static const String createAnewPass = "Create a new password";
   static const String changePass = "Change password";
+  static const String confidentiality = "Confidentiality";
   static const String confirmPass = "Confirm password";
   /// Password Changed
   static const String gladToSeeYouAgain = "Glad to see you again";
@@ -112,6 +114,10 @@ class Strings {
   static const String fifteenThousandSteps = "15,000 Steps";
   static const String oCal = "0 Cal";
   static const String threeThousandCal = "3,000 Cal";
+  static const String optional = "optional";
+  static const String addMore = "Add more";
+  static const String heightWeight = "Height & Weight";
+  static const String chooseYourCharacter = "Choose your Character";
 
   /// Blyn / FAQ Screen
   static const String aiAssistant = "AI Assistant";
@@ -148,6 +154,13 @@ class Strings {
   /// Edit Profile Screen
   static const String editProfile2 = "Edit Profile";
   static const String updateProfile = "Update Profile";
+  static const String update = "Update";
   static const String gender = "Female";
+  static const String height = "Height";
+  static const String weight = "Weight";
+  static const String healthCondition = "Health Conditions ";
+  static const String termsConditions = "Terms & Conditions";
+  static const String privacy = "Privacy & Policy";
+
 
 }
