@@ -12,7 +12,7 @@ class SplashController extends GetxController {
       //   Get.offAllNamed(Routes.loginScreen);
       // }
 
-      Get.offAllNamed(Routes.navigationScreen);
+      Get.offAllNamed(Routes.welcomeScreen);
 
     });
   }
