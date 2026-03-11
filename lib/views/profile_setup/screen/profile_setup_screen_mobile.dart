@@ -50,6 +50,7 @@ class ProfileSetupScreenMobile extends GetView<ProfileSetupController> {
 class _StepIndicator extends StatelessWidget {
   final int current;
   final int total;
+
   const _StepIndicator({required this.current, required this.total});
 
   @override
@@ -696,9 +697,12 @@ class _StepFive extends GetView<ProfileSetupController> {
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
           child: Column(
             children: [
-              PrimaryButtonWidget(
-                title: Strings.continues,
-                onPressed: controller.onFinalContinue,
+              Obx(
+                () => PrimaryButtonWidget(
+                  title: Strings.continues,
+                  isLoading: controller.isCompletingLoading.value,
+                  onPressed: controller.completeProfile,
+                ),
               ),
               Space.height.v30,
               _StepIndicator(current: 4, total: 5),

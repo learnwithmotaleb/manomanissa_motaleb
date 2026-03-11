@@ -1,3 +1,7 @@
+import 'package:manomanissa/core/api/end_point/api_end_points.dart';
+import 'package:manomanissa/core/api/model/basic_success_model.dart';
+import 'package:manomanissa/core/api/services/api_request.dart';
+
 import '../../../core/utils/basic_import.dart';
 
 class ProfileSetupController extends GetxController {
@@ -10,8 +14,18 @@ class ProfileSetupController extends GetxController {
   final selectedGoals = <String>[].obs;
 
   // Step 3
-  final defaultConditions = ["Diabetes", "Asthma", "Hypertension", "Cholesterol"];
-  final healthConditions = <String>["Diabetes", "Asthma", "Hypertension", "Cholesterol"].obs;
+  final defaultConditions = [
+    "Diabetes",
+    "Asthma",
+    "Hypertension",
+    "Cholesterol",
+  ];
+  final healthConditions = <String>[
+    "Diabetes",
+    "Asthma",
+    "Hypertension",
+    "Cholesterol",
+  ].obs;
   final selectedConditions = <String>[].obs;
   final addMoreController = TextEditingController();
 
@@ -134,18 +148,39 @@ class ProfileSetupController extends GetxController {
   }
 
   // Step 5
-  void onFinalContinue() {
-    print("===== PROFILE SETUP DATA =====");
-    print("Name: ${nameController.text}");
-    print("Date of Birth: ${selectedDate.value}");
-    print("Goals: ${selectedGoals.toList()}");
-    print("Health Conditions: ${selectedConditions.toList()}");
-    print("Character: ${selectedCharacter.value}");
-    print("Height: ${selectedHeight.value} cm");
-    print("Weight: ${selectedWeight.value} kg");
-    print("==============================");
 
-    Get.toNamed(Routes.navigationScreen);
+
+  RxBool isCompletingLoading = false.obs;
+
+  Future<BasicSuccessModel> completeProfile() async {
+    return await ApiRequest().post(
+      fromJson: BasicSuccessModel.fromJson,
+      endPoint: ApiEndPoints.baseUrl,
+      isLoading: isCompletingLoading,
+      body: {
+        'name': nameController.text,
+        'dateOfBirth': selectedDate.value?.toIso8601String(),
+        'gender': selectedCharacter.value,
+        // 'goals': selectedGoals.toList(),
+        'healthConditions': selectedConditions.toList(),
+        'heightCm': selectedHeight.value,
+        'weightKg': selectedWeight.value,
+      },
+      onSuccess: (result) {
+
+        print("===== PROFILE SETUP DATA =====");
+        print("Name: ${nameController.text}");
+        print("Date of Birth: ${selectedDate.value}");
+        print("Goals: ${selectedGoals.toList()}");
+        print("Health Conditions: ${selectedConditions.toList()}");
+        print("Character: ${selectedCharacter.value}");
+        print("Height: ${selectedHeight.value} cm");
+        print("Weight: ${selectedWeight.value} kg");
+        print("==============================");
+
+        Get.toNamed(Routes.navigationScreen);
+      },
+    );
   }
 
   @override
