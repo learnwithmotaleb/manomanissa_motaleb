@@ -44,7 +44,7 @@ class TextWidget extends StatelessWidget {
         child: Padding(
           padding: padding,
           child: Text(
-            text,
+            text.tr,
             textAlign: textAlign,
             overflow: textOverflow,
             maxLines: maxLines,

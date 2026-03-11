@@ -19,5 +19,4 @@ export '../widgets/primary_button_widget.dart';
 export 'extensions.dart';
 export '../../../routes/routes.dart';
 export '../widgets/common_app_bar.dart';
-export  'app_storage.dart';
-
+export 'app_storage.dart';

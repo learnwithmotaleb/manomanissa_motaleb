@@ -9,7 +9,6 @@ class NotificationScreenMobile extends GetView<NotificationController> {
       appBar: CommonAppBar(title: "Notification"),
       body: SafeArea(
         child: CustomScrollView(
-          physics: const ClampingScrollPhysics(),
           cacheExtent: 500,
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           slivers: [

@@ -22,8 +22,7 @@ class Strings {
   /// Welcome Screen
   static const String welcome = "Welcome";
 
-  static const String welcomeTitle =
-      "Welcome to\nHealth Genius";
+  static const String welcomeTitle = "Welcome to\nHealth Genius";
 
   static const String welcomeDescription =
       "Improve your daily file with simple goals and Avatar that evolves with you";
@@ -41,7 +40,6 @@ class Strings {
   static const String iDontHaveAnAccount = "I don't have an account";
   static const String contactSupportHelp = "Contact & support / Help";
 
-
   /// Forgot Password
 
   static const String forgotYourPassword = "Forgot your password";
@@ -56,6 +54,7 @@ class Strings {
   static const String changePass = "Change password";
   static const String confidentiality = "Confidentiality";
   static const String confirmPass = "Confirm password";
+
   /// Password Changed
   static const String gladToSeeYouAgain = "Glad to see you again";
 
@@ -97,11 +96,14 @@ class Strings {
   static const String steps = "6,000/8,000 Steps";
   static const String calories = "1,600/2,500 calories";
   static const String verres = "6/8 Verres";
-  static const String sleepTip1 = "Improving your sleep can boost your energy and focus";
-  static const String sleepTip2 = "Better sleep tonight starts with an earlier bedtime";
-  static const String sleepTip3 = "A calm evening routine can improve sleep quality";
-  static const String belowTarget = "You're below your target. One earlier bedtime tonight = better focus and recovery tomorrow.";
-
+  static const String sleepTip1 =
+      "Improving your sleep can boost your energy and focus";
+  static const String sleepTip2 =
+      "Better sleep tonight starts with an earlier bedtime";
+  static const String sleepTip3 =
+      "A calm evening routine can improve sleep quality";
+  static const String belowTarget =
+      "You're below your target. One earlier bedtime tonight = better focus and recovery tomorrow.";
 
   /// Check-In Screen
   static const String checkIn2 = "Check- In";
@@ -127,15 +129,15 @@ class Strings {
   static const String faq3 = "How do I log steps?";
   static const String faq4 = "How do I cancel my Subscription?";
   static const String faq5 = "I'm not receiving notification!";
-  static const String faqAnswer = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.\n\nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.";
-
+  static const String faqAnswer =
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.\n\nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.";
 
   /// AI Chat Screen
   static const String newChat = "New Chat";
   static const String aksBlyn = "Aks Blyn";
   static const String helloMessage = "Hello !";
-  static const String blynWelcomeMessage = "Ask me your questions,\nI'm here to help you";
-
+  static const String blynWelcomeMessage =
+      "Ask me your questions,\nI'm here to help you";
 
   /// Settings Screen
   static const String editProfile = "Edit Profile";
@@ -161,6 +163,4 @@ class Strings {
   static const String healthCondition = "Health Conditions ";
   static const String termsConditions = "Terms & Conditions";
   static const String privacy = "Privacy & Policy";
-
-
 }

@@ -9,10 +9,19 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
       appBar: CommonAppBar(title: "Questions"),
       body: SafeArea(
         child: CustomScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          cacheExtent: 500,
           slivers: [
             SliverPadding(
               padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
-              sliver: SliverToBoxAdapter(child: Column(children: [])),
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  children: [
+
+
+                  ],
+                ),
+              ),
             ),
           ],
         ),

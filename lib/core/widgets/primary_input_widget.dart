@@ -167,7 +167,7 @@ class _PrimaryInputFieldWidgetState extends State<PrimaryInputFieldWidget> {
             },
             readOnly: widget.readOnly,
             decoration: InputDecoration(
-              hintText: widget.hintText,
+              hintText: widget.hintText.tr,
               prefixIcon: widget.prefixIcon,
               hintStyle: CustomStyle.bodyMedium.copyWith(
                 color: Colors.white70,

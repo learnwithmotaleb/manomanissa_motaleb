@@ -18,32 +18,43 @@ class WelcomeScreenMobile extends GetView<WelcomeController> {
                   mainAxisAlignment: mainSpaceBet,
                   children: [
                     SizedBox(),
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(
-                        Dimensions.radius * 2,
-                      ),
-                      child: BlurWidget(
-                        child: Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 2.5,
-                              color: CustomColors.borderDark,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              Dimensions.radius * 2,
-                            ),
+                    Obx(
+                      () => GestureDetector(
+                        onTap: controller.toggleLanguage,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                            Dimensions.radius * 2,
                           ),
-                          height: 50.h,
-                          width: 140.w,
-                          child: Wrap(
-                            spacing: 10.w,
-                            alignment: WrapAlignment.center,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Image.asset(Assets.icons.group.path),
-                              TextWidget(Strings.french),
-                            ],
+                          child: BlurWidget(
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 2.5,
+                                  color: CustomColors.borderDark,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  Dimensions.radius * 2,
+                                ),
+                              ),
+                              height: 50.h,
+                              width: 140.w,
+                              child: Wrap(
+                                spacing: 10.w,
+                                alignment: WrapAlignment.center,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  controller.currentLang.value == 'en'
+                                      ? Image.asset(Assets.icons.en.path)
+                                      : Image.asset(Assets.icons.group.path),
+                                  TextWidget(
+                                    controller.currentLang.value == 'fr'
+                                        ? Strings.french.tr
+                                        : Strings.english.tr,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                       ),

@@ -1,6 +1,7 @@
 import 'package:manomanissa/views/splash/controller/splash_controller.dart';
 
 import 'core/helpers/network_manager.dart';
+import 'core/languages/localization.dart';
 import 'core/utils/basic_import.dart';
 import 'core/widgets/offline_widget.dart';
 import 'initial.dart';
@@ -46,9 +47,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => GetMaterialApp(
-        // translations: Languages(),
-        // locale: Locale(savedLang, savedLang == 'en' ? 'US' : 'GK'),
-        // fallbackLocale: Locale('en', 'US'),
+        translations: Languages(),
+        locale: Locale(savedLang, savedLang == 'en' ? 'US' : 'FR'),
+        fallbackLocale: const Locale('en', 'US'),
         debugShowCheckedModeBanner: false,
         home: hasInternet ? const SplashScreen() : const OfflineWidget(),
         title: Strings.appName,
