@@ -38,11 +38,14 @@ class ForgotPasswordScreenMobile extends GetView<ForgotPasswordController> {
                 ),
                 Space.height.betweenInputBox,
 
-                PrimaryButtonWidget(
-                  title: Strings.sendConfirmation,
-                  onPressed: () {
-                    Get.toNamed(Routes.otpScreen);
-                  },
+                Obx(
+                  () => PrimaryButtonWidget(
+                    title: Strings.sendConfirmation,
+                    isLoading: controller.isLoading.value,
+                    onPressed: () {
+                      controller.forgotPasswordProcess();
+                    },
+                  ),
                 ),
               ],
             ),

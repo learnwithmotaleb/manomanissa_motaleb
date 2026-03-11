@@ -8,7 +8,7 @@ class OtpScreenMobile extends GetView<OtpController> {
     return Scaffold(
       appBar: CommonAppBar(title: ""),
       body: SafeArea(
-        child:  Padding(
+        child: Padding(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
           child: SingleChildScrollView(
             child: Column(
@@ -32,11 +32,14 @@ class OtpScreenMobile extends GetView<OtpController> {
                 OtpInputField(controller: TextEditingController()),
                 Space.height.betweenInputBox,
 
-                PrimaryButtonWidget(
-                  title: Strings.sendConfirmation,
-                  onPressed: () {
-                    Get.toNamed(Routes.reset_passwordScreen);
-                  },
+                Obx(
+                  () => PrimaryButtonWidget(
+                    isLoading: controller.isLoading.value,
+                    title: Strings.sendConfirmation,
+                    onPressed: () {
+                      controller.otpVerifyProcess();
+                    },
+                  ),
                 ),
               ],
             ),

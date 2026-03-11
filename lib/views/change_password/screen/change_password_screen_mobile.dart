@@ -10,7 +10,6 @@ class ChangePasswordScreenMobile extends GetView<ChangePasswordController> {
       body: SafeArea(
         child: Padding(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
-
           child: Form(
             key: controller.formKey,
             child: Column(
@@ -59,7 +58,7 @@ class ChangePasswordScreenMobile extends GetView<ChangePasswordController> {
                     isLoading: controller.isLoading.value,
                     onPressed: () {
                       if (controller.formKey.currentState!.validate()) {
-                        // controller.changePasswordProcess();
+                        controller.changePasswordProcess();
                       }
                     },
                   ),

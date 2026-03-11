@@ -42,13 +42,9 @@ class AuthService {
 
       showSuccessSnackBar: false,
       onSuccess: (result) {
-        AppStorage.save(
-          token: result.data.accessToken,
-          isLoggedIn: true,
-        );
+        AppStorage.save(token: result.data.accessToken, isLoggedIn: true);
         Get.offAllNamed(Routes.navigationScreen);
         log('✅ Login successful - Token saved');
-
       },
     );
   }
@@ -299,7 +295,7 @@ class AuthService {
       // 'confirmPassword': newPassword,
     };
 
-    return await _api.post(
+    return await _api.patch(
       fromJson: BasicSuccessModel.fromJson,
       endPoint: ApiEndPoints.changePassword,
       isLoading: isLoading,
@@ -313,6 +309,7 @@ class AuthService {
         //     subtitle: 'your password has been changed successfully',
         //   ),
         // );
+        Get.offAllNamed(Routes.navigationScreen);
         log('✅ Password changed successfully');
       },
     );

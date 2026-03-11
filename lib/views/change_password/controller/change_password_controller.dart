@@ -1,3 +1,5 @@
+import '../../../core/api/model/basic_success_model.dart';
+import '../../../core/api/services/auth_services.dart';
 import '../../../core/utils/basic_import.dart';
 class ChangePasswordController extends GetxController {
 
@@ -19,13 +21,13 @@ class ChangePasswordController extends GetxController {
   // Change Password APi
   RxBool isLoading = false.obs;
 
-  // Future<BasicSuccessModel> changePasswordProcess() async {
-  //   return await AuthService.changePasswordService(
-  //     isLoading: isLoading,
-  //     oldPassword: oldPasswordController.text,
-  //     newPassword: passwordController.text,
-  //   );
-  // }
+  Future<BasicSuccessModel> changePasswordProcess() async {
+    return await AuthService.changePasswordService(
+      isLoading: isLoading,
+      oldPassword: oldPasswordController.text,
+      newPassword: passwordController.text,
+    );
+  }
 
 
 
