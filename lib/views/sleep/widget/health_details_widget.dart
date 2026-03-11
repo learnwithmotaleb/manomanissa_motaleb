@@ -40,7 +40,6 @@ class HealthDetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverPadding(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

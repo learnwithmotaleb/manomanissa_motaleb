@@ -9,7 +9,6 @@ class GoalScreenScreenMobile extends GetView<GoalScreenController> {
       appBar: CommonAppBar(title: ""),
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPadding(
               padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

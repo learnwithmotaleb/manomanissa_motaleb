@@ -11,7 +11,6 @@ class LoginScreenMobile extends GetView<LoginController> {
         child: Form(
           key: controller.formKey,
           child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
             slivers: [
               SliverPadding(
                 padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

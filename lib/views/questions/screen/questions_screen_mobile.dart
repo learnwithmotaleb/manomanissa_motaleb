@@ -9,7 +9,6 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
       appBar: CommonAppBar(title: "Questions"),
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPadding(
               padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

@@ -10,7 +10,6 @@ class BlynScreenMobile extends GetView<BlynController> {
         child: Stack(
           children: [
             CustomScrollView(
-              physics: const BouncingScrollPhysics(),
               slivers: [
                 SliverPadding(
                   padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

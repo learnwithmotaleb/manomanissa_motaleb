@@ -8,7 +8,6 @@ class CheckScreenMobile extends GetView<CheckController> {
       body: SafeArea(
         child: Obx(
           () => CustomScrollView(
-            physics: const BouncingScrollPhysics(),
             slivers: [
               SliverPadding(
                 padding: Dimensions.defaultHorizontalSize.edgeHorizontal,

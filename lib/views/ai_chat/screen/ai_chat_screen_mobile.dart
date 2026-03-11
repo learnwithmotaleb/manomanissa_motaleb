@@ -115,7 +115,6 @@ class AiChatScreenMobile extends GetView<AiChatController> {
                         )
                       : CustomScrollView(
                           controller: controller.scrollController,
-                          physics: const BouncingScrollPhysics(),
                           slivers: [
                             SliverPadding(
                               padding: EdgeInsets.symmetric(
@@ -323,7 +322,6 @@ class _HistoryDrawer extends GetView<AiChatController> {
             Expanded(
               child: Obx(
                 () => CustomScrollView(
-                  physics: const BouncingScrollPhysics(),
                   slivers: [
                     SliverPadding(
                       padding: EdgeInsets.symmetric(

@@ -93,7 +93,6 @@ class _StepOne extends GetView<ProfileSetupController> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverPadding(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
@@ -144,7 +143,6 @@ class _StepTwo extends GetView<ProfileSetupController> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverPadding(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
@@ -259,7 +257,6 @@ class _StepThree extends GetView<ProfileSetupController> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverPadding(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
@@ -410,7 +407,6 @@ class _StepFour extends GetView<ProfileSetupController> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverPadding(
           padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
