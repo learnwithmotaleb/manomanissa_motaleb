@@ -6,7 +6,7 @@ class VerificationScreenMobile extends GetView<VerificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: "Verification"),
+      appBar: CommonAppBar(title: ""),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [

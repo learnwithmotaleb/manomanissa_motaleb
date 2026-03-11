@@ -116,7 +116,7 @@ class _StepOne extends GetView<ProfileSetupController> {
                 ),
                 Space.height.betweenInputBox,
                 DatePickerWidget(
-                  hint: "Select Date",
+                  hint: Strings.selectADate,
                   onDateSelected: (date) =>
                       controller.selectedDate.value = date,
                 ),
@@ -151,7 +151,7 @@ class _StepTwo extends GetView<ProfileSetupController> {
               children: [
                 Space.height.v100,
                 TextWidget(
-                  "Set your goal",
+                  Strings.setYourGoal,
                   textAlign: TextAlign.center,
                   fontSize: Dimensions.titleLarge,
                   fontWeight: FontWeight.w700,
@@ -159,7 +159,7 @@ class _StepTwo extends GetView<ProfileSetupController> {
                 ),
                 Space.height.v5,
                 TextWidget(
-                  "You can choose several",
+                  Strings.youCanChooseSeveral,
                   textAlign: TextAlign.center,
                   fontSize: Dimensions.bodyMedium,
                   color: CustomColors.whiteColor.withOpacity(0.7),
@@ -275,7 +275,7 @@ class _StepThree extends GetView<ProfileSetupController> {
                       color: CustomColors.whiteColor,
                     ),
                     TextWidget(
-                      "(${Strings.optional})",
+                      "(${Strings.optional.tr})",
                       fontSize: Dimensions.bodyMedium,
                       color: CustomColors.whiteColor.withOpacity(0.6),
                     ),

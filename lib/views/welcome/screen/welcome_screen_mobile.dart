@@ -98,6 +98,7 @@ class WelcomeScreenMobile extends GetView<WelcomeController> {
                   children: [
                     Image.asset(Assets.icons.q.path),
                     TextWidget(
+                      onTap: () => Get.toNamed(Routes.questionsScreen),
                       Strings.frequentlyAskedQuestions,
                       color: CustomColors.primaryTextColor,
                     ),

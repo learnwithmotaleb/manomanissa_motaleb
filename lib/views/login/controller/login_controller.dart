@@ -10,11 +10,5 @@ class LoginController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey();
 
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    passwordFocusNode.dispose();
-    super.onClose();
-  }
+
 }

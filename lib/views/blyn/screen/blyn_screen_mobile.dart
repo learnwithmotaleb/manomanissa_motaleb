@@ -20,7 +20,7 @@ class BlynScreenMobile extends GetView<BlynController> {
                         Row(
                           children: [
                             TextWidget(
-                              "${Strings.aiAssistant} ",
+                              "${Strings.aiAssistant.tr} ",
                               fontSize: Dimensions.headlineSmall,
                               fontWeight: FontWeight.w700,
                               color: CustomColors.whiteColor,
@@ -61,7 +61,7 @@ class BlynScreenMobile extends GetView<BlynController> {
               left: Dimensions.horizontalSize,
               right: Dimensions.horizontalSize,
               child: GlowOutlineButton(
-                title: "${Strings.askAiAssistantBlyn}  →",
+                title: "${Strings.askAiAssistantBlyn.tr}  →",
                 onPressed: () => Get.toNamed(Routes.ai_chatScreen),
               ),
             ),

@@ -1,7 +1,7 @@
 import '../../../core/utils/basic_import.dart';
 
 class LanguageController extends GetxController {
-  final selectedLanguage = 'en'.obs;
+  final selectedLanguage = AppStorage.languageCode.obs;
 
   final languages = [
     {'code': 'fr', 'name': Strings.french, 'flag': Assets.icons.fr.path},
@@ -13,6 +13,12 @@ class LanguageController extends GetxController {
   }
 
   void onContinue() {
+    if (selectedLanguage.value == 'fr') {
+      Get.updateLocale(const Locale('fr', 'FR'));
+    } else {
+      Get.updateLocale(const Locale('en', 'US'));
+    }
+    AppStorage.saveLanguage(selectedLanguage.value);
     Get.back();
   }
 }
