@@ -1,6 +1,5 @@
 import 'dart:developer';
 import '../../../views/login/model/login_model.dart';
-import '../../utils/app_storage.dart';
 import '../../utils/basic_import.dart';
 import '../end_point/api_end_points.dart';
 import '../model/basic_success_model.dart';
@@ -73,7 +72,6 @@ class AuthService {
   */
   static Future<BasicSuccessModel> registerService({
     required RxBool isLoading,
-    required String fullName,
     required String email,
     required String password,
     required String role,
@@ -81,11 +79,9 @@ class AuthService {
     String? phone,
   }) async {
     Map<String, dynamic> inputBody = {
-      'name': fullName.trim(),
       'email': email.trim(),
       'password': password,
       'role': role,
-      'doctorId': doctorId,
     };
 
     return await _api.post(
@@ -119,7 +115,7 @@ class AuthService {
   }
   ──────────────────────────────────────────────────────────────────────────
   */
-  static Future<LoginModel> registerOtpVerifyService({
+  static Future<BasicSuccessModel> registerOtpVerifyService({
     required RxBool isLoading,
     required String code,
     required String email,
@@ -130,27 +126,16 @@ class AuthService {
     };
 
     return await _api.post(
-      fromJson: LoginModel.fromJson,
+      fromJson: BasicSuccessModel.fromJson,
       endPoint: ApiEndPoints.verifyOtp,
       isLoading: isLoading,
       body: inputBody,
       showSuccessSnackBar: false,
-      // onSuccess: (result) {
-      //   AppStorage.save(
-      //     isLoggedIn: true,
-      //     token: result.data?.accessToken,
-      //     isUser: result.data?.role,
-      //   );
-      //   print(result.data?.accessToken ?? '');
-      //   if (result.data?.role == 'USER') {
-      //     log('USER');
-      //     Get.offAllNamed(Routes.navigationScreen);
-      //   } else {
-      //     log('DOCTOR');
-      //     Get.toNamed(Routes.aditionalScreen);
-      //   }
-      //   log('✅ OTP verified successfully');
-      // },
+      onSuccess: (result) {
+        Get.toNamed(Routes.profile_setupScreen);
+
+        log('✅ OTP verified successfully');
+      },
     );
   }
 

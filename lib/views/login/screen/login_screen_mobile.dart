@@ -64,7 +64,7 @@ class LoginScreenMobile extends GetView<LoginController> {
                           title: Strings.logIn,
                           onPressed: () {
                             if (controller.formKey.currentState!.validate()) {
-                              Get.offAllNamed(Routes.navigationScreen);
+                             controller.loginProcess();
                             }
                           },
                           isLoading: controller.isLoading.value,

@@ -28,14 +28,20 @@ class VerificationScreenMobile extends GetView<VerificationController> {
                     ),
                     Space.height.v30,
                     // Email Field
-                    OtpInputField(controller: TextEditingController()),
+                    OtpInputField(controller: controller.otpController),
                     Space.height.betweenInputBox,
 
-                    PrimaryButtonWidget(
-                      title: Strings.sendConfirmation,
-                      onPressed: () {
-                        Get.toNamed(Routes.profile_setupScreen);
-                      },
+                    Obx(
+                      () => PrimaryButtonWidget(
+                        title: Strings.sendConfirmation,
+                        isLoading: controller.isLoading.value,
+                        onPressed: () {
+                          if (controller.otpController.text.isNotEmpty &&
+                              controller.otpController.text.length == 6) {
+                            controller.otpVerifyProcess();
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),
