@@ -1,4 +1,3 @@
-import 'package:manomanissa/core/api/end_point/api_end_points.dart';
 import 'package:manomanissa/core/api/model/basic_success_model.dart';
 import 'package:manomanissa/core/api/services/api_request.dart';
 
@@ -155,14 +154,14 @@ class ProfileSetupController extends GetxController {
   Future<BasicSuccessModel> completeProfile() async {
     return await ApiRequest().post(
       fromJson: BasicSuccessModel.fromJson,
-      endPoint: ApiEndPoints.baseUrl,
+      endPoint: '/profile',
       isLoading: isCompletingLoading,
       body: {
         'name': nameController.text,
         'dateOfBirth': selectedDate.value?.toIso8601String(),
         'gender': selectedCharacter.value,
         // 'goals': selectedGoals.toList(),
-        'healthConditions': selectedConditions.toList(),
+        // 'healthConditions': selectedConditions.toList(),
         'heightCm': selectedHeight.value,
         'weightKg': selectedWeight.value,
       },

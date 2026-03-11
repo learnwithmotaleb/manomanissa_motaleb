@@ -28,8 +28,7 @@ class ApiRequest {
       if (errorMessage.contains('jwt') ||
           errorMessage.contains('token') ||
           errorMessage.contains('expired') ||
-          errorMessage.contains('invalid') ||
-          errorMessage.contains('unauthorized')) {
+          errorMessage.contains('jwt')) {
         AppStorage.clear();
         Get.offAllNamed(Routes.loginScreen);
         // CustomSnackBar.error('Session expired. Please login again.');

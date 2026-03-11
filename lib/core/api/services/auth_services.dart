@@ -111,7 +111,7 @@ class AuthService {
   }
   ──────────────────────────────────────────────────────────────────────────
   */
-  static Future<BasicSuccessModel> registerOtpVerifyService({
+  static Future<LoginModel> registerOtpVerifyService({
     required RxBool isLoading,
     required String code,
     required String email,
@@ -122,14 +122,13 @@ class AuthService {
     };
 
     return await _api.post(
-      fromJson: BasicSuccessModel.fromJson,
+      fromJson: LoginModel.fromJson,
       endPoint: ApiEndPoints.verifyOtp,
       isLoading: isLoading,
       body: inputBody,
       showSuccessSnackBar: false,
       onSuccess: (result) {
         Get.toNamed(Routes.profile_setupScreen);
-
         log('✅ OTP verified successfully');
       },
     );
