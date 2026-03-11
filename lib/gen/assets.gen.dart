@@ -30,6 +30,9 @@ class $AssetsDummyGen {
   /// File path: assets/dummy/bg.png
   AssetGenImage get bg => const AssetGenImage('assets/dummy/bg.png');
 
+  /// File path: assets/dummy/blur.png
+  AssetGenImage get blur => const AssetGenImage('assets/dummy/blur.png');
+
   /// File path: assets/dummy/button.PNG
   AssetGenImage get button => const AssetGenImage('assets/dummy/button.PNG');
 
@@ -57,6 +60,7 @@ class $AssetsDummyGen {
     frame,
     aann,
     bg,
+    blur,
     button,
     carecterf,
     female,

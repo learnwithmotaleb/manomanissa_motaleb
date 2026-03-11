@@ -1,5 +1,3 @@
-import 'package:manomanissa/core/widgets/terms_and_policy.dart';
-
 import '../../../core/utils/basic_import.dart';
 import '../../../core/widgets/empty_data_widget.dart';
 import '../../../core/widgets/loading_widget.dart';

@@ -132,16 +132,18 @@ class BlurWidget extends StatelessWidget {
         child: child,
       );
     }
-    return ClipRRect(
-      borderRadius: borderRadius ?? BorderRadius.circular(Dimensions.radius),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: blurAmount, sigmaY: blurAmount),
-        child: Container(
-          width: width,
-          height: height,
-          padding: padding,
-          color: overlayColor,
-          child: child,
+    return RepaintBoundary(
+      child: ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.circular(Dimensions.radius),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: blurAmount, sigmaY: blurAmount),
+          child: Container(
+            width: width,
+            height: height,
+            padding: padding,
+            color: overlayColor,
+            child: child,
+          ),
         ),
       ),
     );

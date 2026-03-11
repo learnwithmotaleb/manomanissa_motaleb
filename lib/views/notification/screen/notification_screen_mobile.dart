@@ -13,7 +13,6 @@ class NotificationScreenMobile extends GetView<NotificationController> {
           cacheExtent: 500,
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           slivers: [
-
             // SliverToBoxAdapter(
             //   child: Column(
             //     children: [

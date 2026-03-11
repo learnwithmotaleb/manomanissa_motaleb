@@ -9,43 +9,51 @@ class BlynScreenMobile extends GetView<BlynController> {
       body: SafeArea(
         child: Stack(
           children: [
-            ListView(
-              padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+            CustomScrollView(
               physics: const BouncingScrollPhysics(),
-              children: [
-                Space.height.v20,
-                Row(
-                  children: [
-                    TextWidget(
-                      "${Strings.aiAssistant} ",
-                      fontSize: Dimensions.headlineSmall,
-                      fontWeight: FontWeight.w700,
-                      color: CustomColors.whiteColor,
+              slivers: [
+                SliverPadding(
+                  padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+                  sliver: SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        Space.height.v20,
+                        Row(
+                          children: [
+                            TextWidget(
+                              "${Strings.aiAssistant} ",
+                              fontSize: Dimensions.headlineSmall,
+                              fontWeight: FontWeight.w700,
+                              color: CustomColors.whiteColor,
+                            ),
+                            TextWidget(
+                              Strings.blyn,
+                              fontSize: Dimensions.headlineSmall,
+                              fontWeight: FontWeight.w700,
+                              color: CustomColors.primary,
+                            ),
+                          ],
+                        ),
+                        Space.height.v30,
+
+                        ...controller.faqList.asMap().entries.map((entry) {
+                          final index = entry.key;
+                          final faq = entry.value;
+                          return Padding(
+                            padding: EdgeInsets.only(bottom: 12.h),
+                            child: _FaqTile(
+                              question: faq['question']!,
+                              answer: faq['answer']!,
+                              icon: controller.faqIcons[index],
+                            ),
+                          );
+                        }),
+
+                        Space.height.v100,
+                      ],
                     ),
-                    TextWidget(
-                      Strings.blyn,
-                      fontSize: Dimensions.headlineSmall,
-                      fontWeight: FontWeight.w700,
-                      color: CustomColors.primary,
-                    ),
-                  ],
+                  ),
                 ),
-                Space.height.v30,
-
-                ...controller.faqList.asMap().entries.map((entry) {
-                  final index = entry.key;
-                  final faq = entry.value;
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: 12.h),
-                    child: _FaqTile(
-                      question: faq['question']!,
-                      answer: faq['answer']!,
-                      icon: controller.faqIcons[index],
-                    ),
-                  );
-                }),
-
-                Space.height.v100,
               ],
             ),
 

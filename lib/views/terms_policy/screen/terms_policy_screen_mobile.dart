@@ -9,22 +9,25 @@ class TermsPolicyScreenMobile extends GetView<TermsPolicyController> {
       appBar: CommonAppBar(title: ""),
       body: SafeArea(
         child: Obx(
-              () => controller.isLoading.value
+          () => controller.isLoading.value
               ? LoadingWidget()
               : controller.privacyDescription.isEmpty
               ? EmptyDataWidget()
-              : ListView(
-            padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
-            children: [
-              TextWidget(
-                controller.privacyDescription,
-                fontSize: Dimensions.titleSmall,
-                color: CustomColors.grayShade,
-              ),
-            ],
-          ),
+              : CustomScrollView(
+                  slivers: [
+                    SliverPadding(
+                      padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+                      sliver: SliverToBoxAdapter(
+                        child: TextWidget(
+                          controller.privacyDescription,
+                          fontSize: Dimensions.titleSmall,
+                          color: CustomColors.grayShade,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
         ),
-
       ),
     );
   }

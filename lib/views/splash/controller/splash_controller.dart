@@ -1,4 +1,5 @@
 import '../../../core/utils/basic_import.dart';
+
 class SplashController extends GetxController {
   @override
   void onReady() {
@@ -12,8 +13,7 @@ class SplashController extends GetxController {
       //   Get.offAllNamed(Routes.loginScreen);
       // }
 
-      Get.offAllNamed(Routes.navigationScreen);
-
+      Get.offAllNamed(Routes.welcomeScreen);
     });
   }
 }

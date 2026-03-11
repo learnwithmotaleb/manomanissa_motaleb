@@ -8,12 +8,13 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
     return Scaffold(
       appBar: CommonAppBar(title: "Questions"),
       body: SafeArea(
-        child: ListView(
-          padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
-          physics: BouncingScrollPhysics(),
-          children: [
-
-          
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverPadding(
+              padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
+              sliver: SliverToBoxAdapter(child: Column(children: [])),
+            ),
           ],
         ),
       ),
