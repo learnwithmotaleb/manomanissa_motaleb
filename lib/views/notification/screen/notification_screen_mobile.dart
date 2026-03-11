@@ -7,7 +7,7 @@ class NotificationScreenMobile extends GetView<NotificationController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(title: "Notification"),
-      body: SafeArea(
+      body: Obx(() => controller.isLoading.value ? LoadingWidget() : SafeArea(
         child: CustomScrollView(
           cacheExtent: 500,
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -31,6 +31,7 @@ class NotificationScreenMobile extends GetView<NotificationController> {
                 itemBuilder: (context, index) {
                   return RepaintBoundary(
                     child: _NotificationCard(
+                      title: controller.notificationsList[index].title,
                       key: ValueKey(index),
                     ),
                   );
@@ -41,14 +42,15 @@ class NotificationScreenMobile extends GetView<NotificationController> {
             SliverToBoxAdapter(child: Space.height.v30),
           ],
         ),
-      ),
+      ),)
     );
   }
 }
 
 // ─── Extracted widget — rebuild কমাবে ─────────────────────
-class _NotificationCard extends StatelessWidget {
-  const _NotificationCard({super.key});
+class _NotificationCard extends GetView<NotificationController> {
+  final String title;
+  const _NotificationCard({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class _NotificationCard extends StatelessWidget {
         ),
       ),
       child: TextWidget(
-        'A few conscious choices today can make all the difference A few conscious choices today can make all the difference',
+        title, 
         fontSize: Dimensions.titleSmall,
         maxLines: 2,
       ),
