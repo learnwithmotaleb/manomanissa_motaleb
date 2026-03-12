@@ -123,10 +123,11 @@ class CheckScreenMobile extends GetView<CheckController> {
                       Space.height.v30,
 
                       // ─── Confirm Button ────────────────────────
-                      GlowOutlineButton(
+                      Obx(() => GlowOutlineButton(
                         title: Strings.confirm,
-                        onPressed: controller.onConfirm,
-                      ),
+                        isLoading: controller.isLoading.value,
+                        onPressed: controller.isLoading.value ? () {} : controller.onConfirm,
+                      )),
                       Space.height.v30,
                     ],
                   ),

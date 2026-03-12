@@ -53,7 +53,7 @@ class SupportScreenMobile extends GetView<SupportController> {
                           title: "Submit",
                           onPressed: () {
                             if (controller.formKey.currentState!.validate()) {
-                              // controller.sendSupport();
+                              controller.sendSupport();
                             }
                           },
                         ),

@@ -34,6 +34,7 @@ class NotificationScreenMobile extends GetView<NotificationController> {
                     color: CustomColors.whiteColor.withOpacity(0.5),
                     fontSize: Dimensions.titleSmall,
                   ),
+
                 ),
               )
                   : SliverList.builder(
@@ -48,7 +49,6 @@ class NotificationScreenMobile extends GetView<NotificationController> {
                 },
               ),
             ),
-
             SliverToBoxAdapter(child: Space.height.v30),
           ],
         ),

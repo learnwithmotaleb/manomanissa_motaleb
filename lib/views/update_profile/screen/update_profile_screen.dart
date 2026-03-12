@@ -1,3 +1,5 @@
+import 'package:manomanissa/core/widgets/loading_widget.dart';
+
 import '../../../core/utils/basic_import.dart';
 import '../../welcome/screen/welcome_screen.dart';
 import '../controller/update_profile_controller.dart';
