@@ -1,12 +1,10 @@
+import '../../../core/api/services/api_request.dart';
 import '../../../core/utils/basic_import.dart';
+import '../model/faq_model.dart';
+
 class QuestionsController extends GetxController {
-  final faqList = [
-    {'question': Strings.faq1, 'answer': Strings.faqAnswer},
-    {'question': Strings.faq2, 'answer': Strings.faqAnswer},
-    {'question': Strings.faq3, 'answer': Strings.faqAnswer},
-    {'question': Strings.faq4, 'answer': Strings.faqAnswer},
-    {'question': Strings.faq5, 'answer': Strings.faqAnswer},
-  ];
+  final faqList = <Faqs>[].obs;
+  final isLoading = false.obs;
 
   final faqIcons = [
     Icons.help_outline,
@@ -14,5 +12,28 @@ class QuestionsController extends GetxController {
     Icons.directions_walk,
     Icons.cancel_outlined,
     Icons.notifications_off_outlined,
+    Icons.question_answer_outlined,
   ];
+
+  @override
+  void onInit() {
+    super.onInit();
+    getFaqs();
+  }
+
+  Future<void> getFaqs() async {
+    await ApiRequest().get(
+      fromJson: FaqModel.fromJson,
+      endPoint: '/faq',
+      isLoading: isLoading,
+      onSuccess: (result) {
+        faqList.assignAll(result.data);
+      },
+    );
+  }
+
+  IconData getIcon(int index) {
+    if (index < faqIcons.length) return faqIcons[index];
+    return Icons.question_answer_outlined;
+  }
 }

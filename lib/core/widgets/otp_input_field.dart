@@ -12,7 +12,9 @@ class OtpInputField extends StatelessWidget {
       obscureText: true,
       textStyle: TextStyle(color: Colors.white),
       animationType: AnimationType.fade,
+      cursorColor: CustomColors.whiteColor,
       pinTheme: PinTheme(
+
         selectedFillColor: Colors.transparent,
         inactiveFillColor: Colors.transparent,
         inactiveColor: CustomColors.primary,

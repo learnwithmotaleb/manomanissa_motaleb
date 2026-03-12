@@ -128,6 +128,7 @@ class AuthService {
       body: inputBody,
       showSuccessSnackBar: false,
       onSuccess: (result) {
+        AppStorage.save(token: result.data.accessToken);
         Get.toNamed(Routes.profile_setupScreen);
         log('✅ OTP verified successfully');
       },

@@ -31,20 +31,19 @@ class ProfileSetupScreenMobile extends GetView<ProfileSetupController> {
   Widget _buildStep(int step) {
     switch (step) {
       case 0:
-        return _StepOne(key: const ValueKey(0));
+        return _StepOne(key: const ValueKey(0));   // Name & DOB
       case 1:
-        return _StepTwo(key: const ValueKey(1));
+        return _StepThree(key: const ValueKey(1)); // Health Conditions
       case 2:
-        return _StepThree(key: const ValueKey(2));
+        return _StepTwo(key: const ValueKey(2));   // Goals → API
       case 3:
-        return _StepFour(key: const ValueKey(3));
+        return _StepFour(key: const ValueKey(3));  // Character
       case 4:
-        return _StepFive(key: const ValueKey(4));
+        return _StepFive(key: const ValueKey(4));  // Height & Weight
       default:
         return _StepOne(key: const ValueKey(0));
     }
-  }
-}
+  }}
 
 // ─── Step Indicator ───────────────────────────────────────
 class _StepIndicator extends StatelessWidget {
@@ -236,10 +235,11 @@ class _StepTwo extends GetView<ProfileSetupController> {
                   ),
                 ),
                 Space.height.v25,
-                PrimaryButtonWidget(
+                Obx(() => PrimaryButtonWidget(
+                  isLoading: controller.isGoalHealthLoading.value,
                   title: Strings.continues,
-                  onPressed: controller.onGoalContinue,
-                ),
+                  onPressed: controller.submitGoalAndHealth,
+                )),
                 Space.height.v30,
                 _StepIndicator(current: 1, total: 5),
               ],

@@ -16,7 +16,13 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
 
             SliverPadding(
               padding: Dimensions.defaultHorizontalSize.edgeHorizontal,
-              sliver: SliverList.builder(
+              sliver: Obx(() => controller.isLoading.value
+                  ? SliverToBoxAdapter(
+                child: Center(
+                  child: CircularProgressIndicator(color: CustomColors.primary),
+                ),
+              )
+                  : SliverList.builder(
                 itemCount: controller.faqList.length,
                 itemBuilder: (context, index) {
                   final faq = controller.faqList[index];
@@ -26,8 +32,8 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
                       child: GestureDetector(
                         onTap: () => _showAnswerPopup(
                           context,
-                          faq['question']!,
-                          faq['answer']!,
+                          faq.question,
+                          faq.answer,
                         ),
                         child: BlurWidget(
                           blurAmount: 2,
@@ -37,9 +43,7 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
                               vertical: 16.h,
                             ),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Dimensions.radius * 3,
-                              ),
+                              borderRadius: BorderRadius.circular(Dimensions.radius * 3),
                               color: Colors.black.withOpacity(0.35),
                               border: Border.all(
                                 color: CustomColors.primary.withOpacity(0.25),
@@ -49,14 +53,14 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
                             child: Row(
                               children: [
                                 Icon(
-                                  controller.faqIcons[index],
+                                  controller.getIcon(index),
                                   color: CustomColors.primary,
                                   size: 20.h,
                                 ),
                                 Space.width.v15,
                                 Expanded(
                                   child: TextWidget(
-                                    faq['question']!,
+                                    faq.question,
                                     fontSize: Dimensions.bodyMedium,
                                     fontWeight: FontWeight.w500,
                                     color: CustomColors.whiteColor,
@@ -75,7 +79,7 @@ class QuestionsScreenMobile extends GetView<QuestionsController> {
                     ),
                   );
                 },
-              ),
+              )),
             ),
             SliverToBoxAdapter(child: Space.height.v30),
           ],

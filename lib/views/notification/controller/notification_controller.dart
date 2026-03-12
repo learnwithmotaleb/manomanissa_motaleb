@@ -5,13 +5,20 @@ import '../model/notification_model.dart';
 class NotificationController extends GetxController {
 
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchNotifications();
+  }
+
+
   RxList<Notifications> notificationsList = <Notifications>[].obs;
 
   RxBool isLoading = false.obs;
   Future<NotificationModel> fetchNotifications() async {
     return await ApiRequest().get(
       fromJson: NotificationModel.fromJson,
-      endPoint: '/notification',
+      endPoint: '/notifications',
       isLoading: isLoading,
       onSuccess: (result) {
         notificationsList.assignAll(result.data);

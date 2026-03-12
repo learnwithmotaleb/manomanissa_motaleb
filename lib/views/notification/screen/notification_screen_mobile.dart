@@ -6,7 +6,7 @@ class NotificationScreenMobile extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: "Notification"),
+      appBar: CommonAppBar(title: "Notifications"),
       body: Obx(() => controller.isLoading.value ? LoadingWidget() : SafeArea(
         child: CustomScrollView(
           cacheExtent: 500,
@@ -26,12 +26,22 @@ class NotificationScreenMobile extends GetView<NotificationController> {
               padding: EdgeInsets.symmetric(
                 horizontal: Dimensions.defaultHorizontalSize,
               ),
-              sliver: SliverList.builder(
-                itemCount: 100,
+              sliver: controller.notificationsList.isEmpty
+                  ? SliverFillRemaining(
+                child: Center(
+                  child: TextWidget(
+                    "No notifications yet",
+                    color: CustomColors.whiteColor.withOpacity(0.5),
+                    fontSize: Dimensions.titleSmall,
+                  ),
+                ),
+              )
+                  : SliverList.builder(
+                itemCount: controller.notificationsList.length,
                 itemBuilder: (context, index) {
                   return RepaintBoundary(
                     child: _NotificationCard(
-                      title: controller.notificationsList[index].title,
+                      title: controller.notificationsList[index].message,
                       key: ValueKey(index),
                     ),
                   );

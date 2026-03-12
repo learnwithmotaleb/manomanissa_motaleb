@@ -62,7 +62,7 @@ class ProfileSetupController extends GetxController {
       CustomSnackBar.error(Strings.pleaseFillOutTheField);
       return;
     }
-    currentStep.value = 1;
+    currentStep.value = 1; // → Health Conditions
   }
 
   // Step 2
@@ -129,9 +129,6 @@ class ProfileSetupController extends GetxController {
     );
   }
 
-  void onConditionContinue() {
-    currentStep.value = 3;
-  }
 
   // Step 4
   void selectCharacter(String character) {
@@ -159,7 +156,7 @@ class ProfileSetupController extends GetxController {
       body: {
         'name': nameController.text,
         'dateOfBirth': selectedDate.value?.toIso8601String(),
-        'gender': selectedCharacter.value,
+        'gender': selectedCharacter.value.toUpperCase(),
         // 'goals': selectedGoals.toList(),
         // 'healthConditions': selectedConditions.toList(),
         'heightCm': selectedHeight.value,
@@ -182,6 +179,31 @@ class ProfileSetupController extends GetxController {
     );
   }
 
+  void onConditionContinue() {
+    currentStep.value = 2;
+  }
+
+  final isGoalHealthLoading = false.obs;
+
+  Future<void> submitGoalAndHealth() async {
+    if (selectedGoals.isEmpty) {
+      CustomSnackBar.error("Please select at least one goal");
+      return;
+    }
+
+    await ApiRequest().post(
+      fromJson: BasicSuccessModel.fromJson,
+      endPoint: '/onboarding',
+      isLoading: isGoalHealthLoading,
+      body: {
+        "goal": selectedGoals.map((g) => g.toLowerCase()).toList(),
+        "healthConditions": selectedConditions.map((h) => h.toLowerCase()).toList(),
+      },
+      onSuccess: (result) {
+        currentStep.value = 3;
+      },
+    );
+  }
   @override
   void onClose() {
     nameController.dispose();
