@@ -5,6 +5,13 @@ import 'package:manomanissa/core/utils/basic_import.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../../core/utils/basic_import.dart';
 
+import 'dart:math' as math;
+import 'dart:ui';
+import 'package:manomanissa/core/utils/basic_import.dart';
+
+import 'package:fl_chart/fl_chart.dart';
+import '../../../core/utils/basic_import.dart';
+
 class HistoryChartWidget extends StatefulWidget {
   final String title;
   final List<FlSpot> spots7Days;
@@ -13,6 +20,7 @@ class HistoryChartWidget extends StatefulWidget {
   final double minY;
   final double maxY;
   final double interval;
+  final void Function(int days)? onTabChanged;
 
   const HistoryChartWidget({
     super.key,
@@ -23,6 +31,7 @@ class HistoryChartWidget extends StatefulWidget {
     this.minY = 0,
     this.maxY = 10,
     this.interval = 2,
+    this.onTabChanged,
   });
 
   @override
@@ -62,12 +71,18 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
                   _ToggleChip(
                     label: Strings.sevenDays,
                     isActive: is7Days,
-                    onTap: () => setState(() => is7Days = true),
+                    onTap: () {
+                      setState(() => is7Days = true);
+                      widget.onTabChanged?.call(7);
+                    },
                   ),
                   _ToggleChip(
                     label: Strings.thirtyDays,
                     isActive: !is7Days,
-                    onTap: () => setState(() => is7Days = false),
+                    onTap: () {
+                      setState(() => is7Days = false);
+                      widget.onTabChanged?.call(30);
+                    },
                     showStar: true,
                   ),
                 ],

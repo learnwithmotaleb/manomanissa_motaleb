@@ -7,7 +7,7 @@ class HomeScreenMobile extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
+    return Obx(() => controller.isLoading.value ? LoadingWidget() : AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
@@ -79,39 +79,16 @@ class HomeScreenMobile extends GetView<HomeController> {
                       ),
                     ),
                     Space.height.v20,
-                    HistoryChartWidget(
+                    Obx(() => HistoryChartWidget(
                       title: Strings.progression,
                       minY: 0,
-                      maxY: 10,
-                      interval: 2,
-                      bottomLabels: const [
-                        'Sat',
-                        'Sun',
-                        'Mon',
-                        'Tue',
-                        'Wed',
-                        'Thu',
-                        'Fri',
-                      ],
-                      spots7Days: const [
-                        FlSpot(0, 3.5),
-                        FlSpot(1, 4.0),
-                        FlSpot(2, 3.8),
-                        FlSpot(3, 4.2),
-                        FlSpot(4, 3.9),
-                        FlSpot(5, 5.8),
-                        FlSpot(6, 6.2),
-                      ],
-                      spots30Days: const [
-                        FlSpot(0, 4.0),
-                        FlSpot(1, 5.0),
-                        FlSpot(2, 4.5),
-                        FlSpot(3, 6.0),
-                        FlSpot(4, 5.5),
-                        FlSpot(5, 6.5),
-                        FlSpot(6, 7.0),
-                      ],
-                    ),
+                      maxY: controller.maxScore,
+                      interval: 20,
+                      bottomLabels: controller.currentLabels,
+                      spots7Days: controller.spots7Days,
+                      spots30Days: controller.spots30Days,
+                      onTabChanged: (days) => controller.onDaysChanged(days), // HistoryChartWidget এ এই callback থাকলে
+                    )),
                     Space.height.v40,
                   ]),
                 ),
@@ -120,7 +97,7 @@ class HomeScreenMobile extends GetView<HomeController> {
           ),
         ],
       ),
-    );
+    ),);
   }
 
   Widget _share() {
