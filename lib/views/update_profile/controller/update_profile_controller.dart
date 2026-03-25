@@ -115,6 +115,8 @@ class UpdateProfileController extends GetxController {
     );
   }
 
+  RxBool isUpdate = false.obs;
+
   Future<void> onUpdate() async {
     if (nameController.text.trim().isEmpty) {
       CustomSnackBar.error(Strings.pleaseFillOutTheField);
@@ -123,8 +125,8 @@ class UpdateProfileController extends GetxController {
 
     await ApiRequest().patch(
       fromJson: BasicSuccessModel.fromJson,
-      endPoint: '/profile/me',
-      isLoading: isLoading,
+      endPoint: '/profile',
+      isLoading: isUpdate,
       body: {
         "name": nameController.text.trim(),
         if (selectedDate.value != null)

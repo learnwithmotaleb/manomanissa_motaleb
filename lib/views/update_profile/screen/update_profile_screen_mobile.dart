@@ -145,9 +145,8 @@ class UpdateProfileScreenMobile extends GetView<UpdateProfileController> {
                       Obx(
                         () => GlowOutlineButton(
                           title: Strings.updateProfile,
-                          onPressed: controller.isLoading.value
-                              ? () {}
-                              : controller.onUpdate,
+                          onPressed:  controller.onUpdate,
+                          isLoading: controller.isUpdate.value,
                         ),
                       ),
                     ],

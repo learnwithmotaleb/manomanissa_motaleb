@@ -155,7 +155,7 @@ class Strings {
 
   /// Edit Profile Screen
   static const String editProfile2 = "Edit Profile";
-  static const String updateProfile = "Update Profile";
+  static const String   updateProfile = "Update Profile";
   static const String update = "Update";
   static const String gender = "Female";
   static const String height = "Height";
