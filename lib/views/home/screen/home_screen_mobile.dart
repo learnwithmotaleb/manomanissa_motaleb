@@ -25,11 +25,11 @@ class HomeScreenMobile extends GetView<HomeController> {
             left: 0,
             right: 0,
             child: Center(
-              child: Image.asset(
-                Assets.dummy.aann.path,
+              child: Obx(() => Image.asset(
+                controller.dynamicCharacterPath,
                 height: size.height * 0.40,
                 fit: BoxFit.contain,
-              ),
+              )),
             ),
           ),
 
@@ -89,7 +89,7 @@ class HomeScreenMobile extends GetView<HomeController> {
                       bottomLabels: controller.currentLabels,
                       spots7Days: controller.spots7Days,
                       spots30Days: controller.spots30Days,
-                      onTabChanged: (days) => controller.onDaysChanged(days), // HistoryChartWidget এ এই callback থাকলে
+                      onTabChanged: (days) => controller.onDaysChanged(days),
                     )),
                     Space.height.v40,
                   ]),

@@ -14,6 +14,18 @@ import 'package:flutter/widgets.dart';
 class $AssetsDummyGen {
   const $AssetsDummyGen();
 
+  /// File path: assets/dummy/Activity Male.gif
+  AssetGenImage get activityMale =>
+      const AssetGenImage('assets/dummy/Activity Male.gif');
+
+  /// File path: assets/dummy/Activity jogging.gif
+  AssetGenImage get activityJogging =>
+      const AssetGenImage('assets/dummy/Activity jogging.gif');
+
+  /// File path: assets/dummy/Drinking.gif
+  AssetGenImage get drinking =>
+      const AssetGenImage('assets/dummy/Drinking.gif');
+
   /// File path: assets/dummy/Frame 2147229116.png
   AssetGenImage get frame2147229116Png =>
       const AssetGenImage('assets/dummy/Frame 2147229116.png');
@@ -23,6 +35,18 @@ class $AssetsDummyGen {
 
   /// File path: assets/dummy/Frame.png
   AssetGenImage get frame => const AssetGenImage('assets/dummy/Frame.png');
+
+  /// File path: assets/dummy/Nutrition Female.gif
+  AssetGenImage get nutritionFemale =>
+      const AssetGenImage('assets/dummy/Nutrition Female.gif');
+
+  /// File path: assets/dummy/Nutrition Male.gif
+  AssetGenImage get nutritionMale =>
+      const AssetGenImage('assets/dummy/Nutrition Male.gif');
+
+  /// File path: assets/dummy/Sleeping.gif
+  AssetGenImage get sleeping =>
+      const AssetGenImage('assets/dummy/Sleeping.gif');
 
   /// File path: assets/dummy/aann.gif
   AssetGenImage get aann => const AssetGenImage('assets/dummy/aann.gif');
@@ -40,32 +64,52 @@ class $AssetsDummyGen {
   AssetGenImage get carecterf =>
       const AssetGenImage('assets/dummy/carecterf.gif');
 
+  /// File path: assets/dummy/dringking.gif
+  AssetGenImage get dringking =>
+      const AssetGenImage('assets/dummy/dringking.gif');
+
   /// File path: assets/dummy/female.png
   AssetGenImage get female => const AssetGenImage('assets/dummy/female.png');
 
   /// File path: assets/dummy/male.png
   AssetGenImage get male => const AssetGenImage('assets/dummy/male.png');
 
+  /// File path: assets/dummy/sleeepingm.gif
+  AssetGenImage get sleeepingm =>
+      const AssetGenImage('assets/dummy/sleeepingm.gif');
+
   /// File path: assets/dummy/splashgif.gif
   AssetGenImage get splashgif =>
       const AssetGenImage('assets/dummy/splashgif.gif');
+
+  /// File path: assets/dummy/verify.png
+  AssetGenImage get verify => const AssetGenImage('assets/dummy/verify.png');
 
   /// File path: assets/dummy/welcom.png
   AssetGenImage get welcom => const AssetGenImage('assets/dummy/welcom.png');
 
   /// List of all assets
   List<dynamic> get values => [
+    activityMale,
+    activityJogging,
+    drinking,
     frame2147229116Png,
     frame2147229116Svg,
     frame,
+    nutritionFemale,
+    nutritionMale,
+    sleeping,
     aann,
     bg,
     blur,
     button,
     carecterf,
+    dringking,
     female,
     male,
+    sleeepingm,
     splashgif,
+    verify,
     welcom,
   ];
 }

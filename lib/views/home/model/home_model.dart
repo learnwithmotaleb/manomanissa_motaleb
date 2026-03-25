@@ -1,74 +1,76 @@
-class MetricItem {
-  final num value;
-  final num target;
-  final String unit;
-
-  MetricItem({required this.value, required this.target, required this.unit});
-
-  factory MetricItem.fromJson(Map<String, dynamic> json) => MetricItem(
-    value: json['value'] ?? 0,
-    target: json['target'] ?? 0,
-    unit: json['unit'] ?? '',
-  );
-}
-
-class MetricSummary {
-  final MetricItem sleep;
-  final MetricItem hydration;
-  final MetricItem activity;
-  final MetricItem nutrition;
-
-  MetricSummary({
-    required this.sleep,
-    required this.hydration,
-    required this.activity,
-    required this.nutrition,
-  });
-
-  factory MetricSummary.fromJson(Map<String, dynamic> json) => MetricSummary(
-    sleep: MetricItem.fromJson(json['sleep']),
-    hydration: MetricItem.fromJson(json['hydration']),
-    activity: MetricItem.fromJson(json['activity']),
-    nutrition: MetricItem.fromJson(json['nutrition']),
-  );
-}
-
-class ProgressionItem {
-  final String date;
-  final String day;
-  final num score;
-
-  ProgressionItem({required this.date, required this.day, required this.score});
-
-  factory ProgressionItem.fromJson(Map<String, dynamic> json) => ProgressionItem(
-    date: json['date'] ?? '',
-    day: json['day'] ?? '',
-    score: json['score'] ?? 0,
-  );
-}
-
 class HomeModel {
-  final String greeting;
-  final num todayScore;
-  final MetricSummary metricSummary;
-  final List<ProgressionItem> progression;
+  final bool success;
+  final int statusCode;
+  final String message;
+  final Data data;
 
   HomeModel({
+    required this.success,
+    required this.statusCode,
+    required this.message,
+    required this.data,
+  });
+
+  factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
+    success: json["success"] ?? false,
+    statusCode: json["statusCode"] ?? 200,
+    message: json["message"] ?? '',
+    data: Data.fromJson(json["data"] ?? {}),
+  );
+}
+
+class Data {
+  final String greeting;
+  final String gender;
+  final int todayScore;
+  final Mood mood;
+  final List<Progression> progression;
+
+  Data({
     required this.greeting,
+    required this.gender,
     required this.todayScore,
-    required this.metricSummary,
+    required this.mood,
     required this.progression,
   });
 
-  factory HomeModel.fromJson(Map<String, dynamic> json) {
-    final data = json['data'];
-    return HomeModel(
-      greeting: data['greeting'] ?? '',
-      todayScore: data['todayScore'] ?? 0,
-      metricSummary: MetricSummary.fromJson(data['metricSummary']),
-      progression: (data['progression'] as List<dynamic>)
-          .map((e) => ProgressionItem.fromJson(e))
-          .toList(),
-    );
-  }
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    greeting: json["greeting"] ?? '',
+    gender: json["gender"] ?? '',
+    todayScore: json["todayScore"] ?? 0,
+    mood: json["mood"] != null ? Mood.fromJson(json["mood"]) : Mood(primaryFactor: ''),
+    progression: json["progression"] != null 
+        ? List<Progression>.from(json["progression"].map((x) => Progression.fromJson(x)))
+        : [],
+  );
+}
+
+class Mood {
+  final String primaryFactor;
+
+  Mood({
+    required this.primaryFactor,
+  });
+
+  factory Mood.fromJson(Map<String, dynamic> json) => Mood(
+    primaryFactor: json["primary_factor"] ?? '',
+  );
+}
+
+class Progression {
+  final DateTime date;
+  final String day;
+  final int score;
+
+  Progression({
+    required this.date,
+    required this.day,
+    required this.score,
+  });
+
+  factory Progression.fromJson(Map<String, dynamic> json) => Progression(
+    date: json["date"] != null ? DateTime.parse(json["date"]) : DateTime.now(),
+    day: json["day"] ?? '',
+    score: json["score"] ?? 0,
+  );
 }

@@ -13,30 +13,24 @@ class HomeInfoCard extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Obx(() {
-      final metrics = controller.metrics;
+    // Dummy values from controller (static, no Rx needed)
+    final sleepVal = controller.sleepVal;
+    final sleepTarget = controller.sleepTarget;
+    final sleepProgress = sleepTarget > 0 ? sleepVal / sleepTarget : 0.0;
 
-      // Sleep
-      final sleepVal = metrics?.sleep.value ?? 0;
-      final sleepTarget = metrics?.sleep.target ?? 8;
-      final sleepProgress = sleepTarget > 0 ? sleepVal / sleepTarget : 0.0;
+    final hydVal = controller.hydVal;
+    final hydTarget = controller.hydTarget;
+    final hydProgress = hydTarget > 0 ? hydVal / hydTarget : 0.0;
 
-      // Hydration
-      final hydVal = metrics?.hydration.value ?? 0;
-      final hydTarget = metrics?.hydration.target ?? 3;
-      final hydProgress = hydTarget > 0 ? hydVal / hydTarget : 0.0;
+    final actVal = controller.actVal;
+    final actTarget = controller.actTarget;
+    final actProgress = actTarget > 0 ? actVal / actTarget : 0.0;
 
-      // Activity
-      final actVal = metrics?.activity.value ?? 0;
-      final actTarget = metrics?.activity.target ?? 6000;
-      final actProgress = actTarget > 0 ? actVal / actTarget : 0.0;
+    final nutVal = controller.nutVal;
+    final nutTarget = controller.nutTarget;
+    final nutProgress = nutTarget > 0 ? nutVal / nutTarget : 0.0;
 
-      // Nutrition
-      final nutVal = metrics?.nutrition.value ?? 0;
-      final nutTarget = metrics?.nutrition.target ?? 2500;
-      final nutProgress = nutTarget > 0 ? nutVal / nutTarget : 0.0;
-
-      return SizedBox(
+    return SizedBox(
         height: size.height * 0.4,
         child: Stack(
           alignment: Alignment.center,
@@ -160,6 +154,5 @@ class HomeInfoCard extends GetView<HomeController> {
           ],
         ),
       );
-    });
   }
 }

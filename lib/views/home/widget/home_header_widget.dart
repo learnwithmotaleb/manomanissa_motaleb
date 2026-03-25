@@ -75,7 +75,7 @@ class HomeHeaderWidget extends GetView<HomeController> {
                 ),
               ),
               child: TextWidget(
-                '${Strings.todaysScore}: ${controller.todayScore}',
+                Strings.todaysScore,
                 fontSize: Dimensions.titleSmall,
                 fontWeight: FontWeight.w500,
                 color: CustomColors.whiteColor,

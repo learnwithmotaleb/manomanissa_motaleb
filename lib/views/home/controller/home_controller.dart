@@ -4,12 +4,10 @@ import '../../../core/api/services/api_request.dart';
 import '../../../core/utils/basic_import.dart';
 import '../model/home_model.dart';
 import 'dart:ui' as ui;
-import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../../core/utils/basic_import.dart';
 
 class HomeController extends GetxController {
   final isLoading = false.obs;
@@ -24,21 +22,47 @@ class HomeController extends GetxController {
   final labels30Days = <String>[].obs;
 
   String get userName {
-    final greeting = homeData.value?.greeting ?? '';
+    final greeting = homeData.value?.data.greeting ?? '';
     // "Hello, Inès Laurent" → "Inès Laurent"
     if (greeting.contains(', ')) return greeting.split(', ').last;
+    if (greeting.contains(' ')) return greeting.split(' ').sublist(1).join(' ');
     return greeting;
   }
 
-  num get todayScore => homeData.value?.todayScore ?? 0;
+  num get todayScore => homeData.value?.data.todayScore ?? 0;
 
-  MetricSummary? get metrics => homeData.value?.metricSummary;
+  String get dynamicCharacterPath {
+    final factor = homeData.value?.data.mood.primaryFactor.toLowerCase() ?? '';
+    switch (factor) {
+      case 'sleep':
+        return Assets.dummy.sleeping.path;
+      case 'hydration_liters':
+        return Assets.dummy.dringking.path;
+      case 'steps':
+        return Assets.dummy.activityJogging.path;
+      case 'calories':
+        return Assets.dummy.aann.path;
+      default:
+        return Assets.dummy.aann.path;
+    }
+  }
+
+  // Dummy metrics getters to keep HomeInfoCard from throwing errors since API no longer provides these
+  double get sleepVal => 0.0;
+  double get sleepTarget => 8.0;
+  double get hydVal => 0.0;
+  double get hydTarget => 3.0;
+  double get actVal => 0.0;
+  double get actTarget => 6000.0;
+  double get nutVal => 0.0;
+  double get nutTarget => 2500.0;
 
   List<FlSpot> get currentSpots =>
       selectedDays.value == 7 ? spots7Days : spots30Days;
 
   List<String> get currentLabels =>
       selectedDays.value == 7 ? labels7Days : labels30Days;
+
 
   double get maxScore {
     final spots = currentSpots;
@@ -68,12 +92,12 @@ class HomeController extends GetxController {
       queryParams: {'days': days},
       onSuccess: (result) {
         homeData.value = result;
-        final spots = result.progression
+        final spots = result.data.progression
             .asMap()
             .entries
             .map((e) => FlSpot(e.key.toDouble(), e.value.score.toDouble()))
             .toList();
-        final labels = result.progression.map((e) => e.day).toList();
+        final labels = result.data.progression.map((e) => e.day).toList();
 
         if (days == 7) {
           spots7Days.assignAll(spots);
