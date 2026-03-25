@@ -9,7 +9,7 @@ class ProfileSetupController extends GetxController {
   final selectedDate = Rxn<DateTime>();
 
   // Step 2
-  final goals = ["Sleep", "Hydration", "Activity (walking)", "Nutrition"];
+  final goal = ["Sleep", "Hydration", "Activity (walking)", "Nutrition"];
   final selectedGoals = <String>[].obs;
 
   // Step 3

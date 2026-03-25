@@ -28,7 +28,7 @@ class GoalScreenController extends GetxController {
       fromJson: (json) => json, // Using dynamic/void response for basic patch if no specific model
       endPoint: ApiEndPoints.onboarding,
       body: {
-        "goals": selectedGoals.map((e) => e.toLowerCase()).toList()
+        "goal": selectedGoals.map((e) => e.toLowerCase()).toList()
       },
       isLoading: isLoading,
       showSuccessSnackBar: true,

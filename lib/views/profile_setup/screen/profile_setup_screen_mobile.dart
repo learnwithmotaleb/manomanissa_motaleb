@@ -167,7 +167,7 @@ class _StepTwo extends GetView<ProfileSetupController> {
                 Space.height.v30,
                 Obx(
                   () => Column(
-                    children: controller.goals.map((goal) {
+                    children: controller.goal.map((goal) {
                       final isSelected = controller.selectedGoals.contains(
                         goal,
                       );

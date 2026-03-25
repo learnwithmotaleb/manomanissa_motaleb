@@ -90,7 +90,7 @@ class _PrimaryInputFieldWidgetState extends State<PrimaryInputFieldWidget> {
 
     // Only enforce min length on password field, not confirm
     if (widget.isPassword && widget.confirmWith == null) {
-      if (value.length < 6) return "Password must be at least 6 characters";
+      if (value.length < 8) return "Password must be at least 8 characters";
     }
 
     // ✅ Live confirm password validation

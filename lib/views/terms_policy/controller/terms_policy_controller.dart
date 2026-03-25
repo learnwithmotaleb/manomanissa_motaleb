@@ -31,7 +31,8 @@ class TermsPolicyController extends GetxController {
       isLoading: isLoading,
       onSuccess: (result) {
         if (result.data != null) {
-            privacyDescription = result.data['content'] ?? '';
+
+          privacyDescription = result.data['content'] ?? '';
         }
       },
     );
