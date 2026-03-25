@@ -1,50 +1,90 @@
+import '../../../core/api/services/api_request.dart';
 import '../../../core/utils/basic_import.dart';
+import '../model/ai_chat_model.dart';
 class AiChatController extends GetxController {
   final inputController = TextEditingController();
+  final searchController = TextEditingController();
   final scrollController = ScrollController();
-  final messages = <Map<String, String>>[].obs;
 
-  void onSend() {
+  final messages = <Map<String, String>>[].obs;
+  final chatHistory = <ConversationModel>[].obs;
+  final filteredHistory = <ConversationModel>[].obs;
+
+  final isLoading = false.obs;
+  final isSending = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    getConversations();
+    searchController.addListener(_onSearch);
+  }
+
+  Future<void> getConversations() async {
+    await ApiRequest().get(
+      fromJson: (json) {
+        final list = (json['data'] ?? []) as List;
+        return list.map((e) => ConversationModel.fromJson(e)).toList();
+      },
+      endPoint: '/assistant/conversations',
+      isLoading: isLoading,
+      queryParams: {'user_id': AppStorage.userId},
+      useAiBaseUrl: true,
+      onSuccess: (result) {
+        chatHistory.assignAll(result);
+        filteredHistory.assignAll(result);
+      },
+    );
+  }
+
+  // ─── POST: Send Message ─────────────────────────────────
+  Future<void> onSend() async {
     final text = inputController.text.trim();
     if (text.isEmpty) return;
 
+    // User message তাৎক্ষণিক দেখাও
     messages.add({'text': text, 'isUser': 'true'});
     inputController.clear();
-
-    Future.delayed(const Duration(milliseconds: 800), () {
-      messages.add({'text': 'I am Blyn, your AI assistant!', 'isUser': 'false'});
-      _scrollToBottom();
-    });
-
     _scrollToBottom();
+
+    await ApiRequest().post(
+      fromJson: AiChatModel.fromJson,
+      endPoint: '/assistant/ask',
+      isLoading: isSending,
+      useAiBaseUrl: true,
+      body: {
+        "user_id": AppStorage.userId,
+        "question": text,
+      },
+      onSuccess: (result) {
+        messages.add({'text': result.answer, 'isUser': 'false'});
+        _scrollToBottom();
+        getConversations(); // history refresh
+      },
+    );
   }
 
   void onNewChat() {
     messages.clear();
   }
 
-  void onMenu() {
-  }
-
-  final searchController = TextEditingController();
-  final chatHistory = <String>[
-    Strings.faq1,
-    Strings.faq2,
-    Strings.faq3,
-  ].obs;
-
-  void loadHistory(int index) {
+  void loadHistory(ConversationModel conv) {
     messages.clear();
-    messages.add({'text': chatHistory[index], 'isUser': 'true'});
+    messages.add({'text': conv.question, 'isUser': 'true'});
+    messages.add({'text': conv.answer, 'isUser': 'false'});
+    Get.back();
+    _scrollToBottom();
   }
 
-
-  @override
-  void onClose() {
-    inputController.dispose();
-    searchController.dispose();
-    scrollController.dispose();
-    super.onClose();
+  void _onSearch() {
+    final query = searchController.text.toLowerCase();
+    if (query.isEmpty) {
+      filteredHistory.assignAll(chatHistory);
+    } else {
+      filteredHistory.assignAll(
+        chatHistory.where((c) => c.question.toLowerCase().contains(query)),
+      );
+    }
   }
 
   void _scrollToBottom() {
@@ -59,4 +99,11 @@ class AiChatController extends GetxController {
     });
   }
 
+  @override
+  void onClose() {
+    inputController.dispose();
+    searchController.dispose();
+    scrollController.dispose();
+    super.onClose();
+  }
 }

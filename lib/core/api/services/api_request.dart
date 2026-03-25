@@ -57,6 +57,8 @@ class ApiRequest {
     required R Function(Map<String, dynamic>) fromJson,
     required String endPoint,
     required RxBool isLoading,
+    bool useAiBaseUrl = false, // ✅ add
+
     required Map<String, dynamic> body,
     Map<String, dynamic>? queryParams,
     bool showSuccessSnackBar = false,
@@ -67,7 +69,7 @@ class ApiRequest {
       log('|📤|---------[ 📦 HTTP POST REQUEST STARTED ]---------|📤|');
 
       final uri = Uri.parse(
-        '${ApiEndPoints.baseUrl}$endPoint',
+        '${useAiBaseUrl ? ApiEndPoints.aiBaseUrl : ApiEndPoints.baseUrl}$endPoint',
       ).replace(queryParameters: queryParams);
 
       printUrl(uri.toString());
@@ -109,6 +111,7 @@ class ApiRequest {
     required R Function(Map<String, dynamic>) fromJson,
     required String endPoint,
     required RxBool isLoading,
+    bool useAiBaseUrl = false,
     String? id,
     Map<String, dynamic>? queryParams,
     bool showSuccessSnackBar = false,
@@ -122,7 +125,8 @@ class ApiRequest {
       isLoading.value = true;
       log('|📥|---------[ 🌐 HTTP GET REQUEST STARTED ]---------|📥|');
 
-      String fullUrl = '${ApiEndPoints.baseUrl}$endPoint';
+      final baseUrl = useAiBaseUrl ? ApiEndPoints.aiBaseUrl : ApiEndPoints.baseUrl;
+      String fullUrl = '$baseUrl$endPoint';
       if (id != null && id.isNotEmpty) {
         fullUrl += '/$id';
       }
@@ -143,11 +147,11 @@ class ApiRequest {
       final response = await http
           .get(uri, headers: await _bearerHeaderInfo())
           .timeout(const Duration(seconds: 120));
+
       if (showResponse) {
         try {
-          final prettyJson = const JsonEncoder.withIndent(
-            '  ',
-          ).convert(jsonDecode(response.body));
+          final prettyJson = const JsonEncoder.withIndent('  ')
+              .convert(jsonDecode(response.body));
           log('|📤|---------[ RESPONSE BODY ]---------|📤|');
           log(prettyJson);
           log('|📤|---------------------------------|📤|');
@@ -156,12 +160,14 @@ class ApiRequest {
         }
       }
       log('|✅|---------[ ✅ HTTP GET REQUEST COMPLETED ]---------|✅|');
-      log(
-        '╚════════════════════════════════════════════════════════════════════════════════════════════',
-      );
+      log('╚════════════════════════════════════════════════════════════════════════════════════════════');
 
       if (response.statusCode == 200) {
-        final Map<String, dynamic> json = jsonDecode(response.body);
+        final decoded = jsonDecode(response.body);
+        final Map<String, dynamic> json = decoded is List
+            ? {'data': decoded}
+            : decoded as Map<String, dynamic>;
+
         final result = fromJson(json);
 
         final successMessage =
@@ -176,7 +182,6 @@ class ApiRequest {
         return result;
       } else {
         _handleUnauthorized(response);
-
         final error = jsonDecode(response.body);
         final errorMessage = error['message'] ?? 'Something went wrong!';
         log('❌ Error: $errorMessage');

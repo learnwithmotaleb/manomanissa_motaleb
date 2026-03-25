@@ -18,13 +18,6 @@ class LoginModel {
     message: json["message"],
     data: Data.fromJson(json["data"]),
   );
-
-  Map<String, dynamic> toJson() => {
-    "success": success,
-    "statusCode": statusCode,
-    "message": message,
-    "data": data.toJson(),
-  };
 }
 
 class Data {
@@ -43,26 +36,19 @@ class Data {
     accessToken: json["accessToken"],
     refreshToken: json["refreshToken"],
   );
-
-  Map<String, dynamic> toJson() => {
-    "user": user.toJson(),
-    "accessToken": accessToken,
-    "refreshToken": refreshToken,
-  };
 }
 
 class User {
   final String email;
+  final String userId;
 
   User({
     required this.email,
+    required this.userId,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
     email: json["email"],
+    userId: json["userId"],
   );
-
-  Map<String, dynamic> toJson() => {
-    "email": email,
-  };
 }

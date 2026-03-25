@@ -43,6 +43,7 @@ class AuthService {
       showSuccessSnackBar: false,
       onSuccess: (result) {
         AppStorage.save(token: result.data.accessToken, isLoggedIn: true);
+        AppStorage.save(userId: result.data.user.userId);
         Get.offAllNamed(Routes.navigationScreen);
         log('✅ Login successful - Token saved');
       },
@@ -297,10 +298,10 @@ class AuthService {
 
     return await _api.patch(
       fromJson: BasicSuccessModel.fromJson,
-      endPoint: ApiEndPoints.changePassword,
+      endPoint: ApiEndPoints.userChangePassword,
       isLoading: isLoading,
       body: inputBody,
-      showSuccessSnackBar: false,
+      showSuccessSnackBar: true,
       onSuccess: (result) {
         // Get.offAll(
         //   ConfirmationWidget(

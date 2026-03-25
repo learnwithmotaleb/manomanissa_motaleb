@@ -1,5 +1,6 @@
 class ApiEndPoints {
   static const String baseUrl = 'http://10.10.20.22:3002/api';
+  static const String aiBaseUrl = 'http://10.10.20.111:8006';
 
 
   // AUTH ENDPOINTS
@@ -12,5 +13,7 @@ class ApiEndPoints {
   static const String verifyResetOtp = '/auth/verify-reset-otp';
   static const String resendOtp = '/auth/resend-otp';
   static const String changePassword = '/auth/resend-otp';
+
+  static const String userChangePassword = '/users/change-password';
 
 }

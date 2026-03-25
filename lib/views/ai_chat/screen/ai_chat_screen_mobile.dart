@@ -180,22 +180,27 @@ class AiChatScreenMobile extends GetView<AiChatController> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: controller.onSend,
-                          child: Container(
+                          onTap: controller.isSending.value ? null : controller.onSend,
+                          child: Obx(() => Container(
                             padding: EdgeInsets.all(8.r),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(
+                              border: Border.all(color: CustomColors.primary, width: 1.5),
+                              color: controller.isSending.value
+                                  ? CustomColors.primary.withOpacity(0.3)
+                                  : Colors.transparent,
+                            ),
+                            child: controller.isSending.value
+                                ? SizedBox(
+                              width: 18.h,
+                              height: 18.h,
+                              child: CircularProgressIndicator(
                                 color: CustomColors.primary,
-                                width: 1.5,
+                                strokeWidth: 2,
                               ),
-                            ),
-                            child: Icon(
-                              Icons.arrow_upward,
-                              color: CustomColors.primary,
-                              size: 18.h,
-                            ),
-                          ),
+                            )
+                                : Icon(Icons.arrow_upward, color: CustomColors.primary, size: 18.h),
+                          )),
                         ),
                       ],
                     ),
@@ -328,22 +333,20 @@ class _HistoryDrawer extends GetView<AiChatController> {
                         horizontal: Dimensions.horizontalSize,
                       ),
                       sliver: SliverList.builder(
-                        itemCount: controller.chatHistory.length,
+                        itemCount: controller.filteredHistory.length,
                         itemBuilder: (context, index) {
+                          final conv = controller.filteredHistory[index];
                           return GestureDetector(
-                            onTap: () {
-                              controller.loadHistory(index);
-                              Get.back();
-                            },
+                            onTap: () => controller.loadHistory(conv),
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 18.h),
                               child: TextWidget(
-                                controller.chatHistory[index],
+                                conv.question,
                                 fontSize: Dimensions.bodyMedium,
                                 fontWeight: FontWeight.w400,
-                                color: CustomColors.whiteColor.withOpacity(
-                                  0.85,
-                                ),
+                                color: CustomColors.whiteColor.withOpacity(0.85),
+                                maxLines: 1,
+                                textOverflow: TextOverflow.ellipsis,
                               ),
                             ),
                           );
