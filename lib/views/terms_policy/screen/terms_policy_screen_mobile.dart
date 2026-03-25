@@ -6,7 +6,7 @@ class TermsPolicyScreenMobile extends GetView<TermsPolicyController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: ""),
+      appBar: CommonAppBar(title: controller.appBarTitle),
       body: SafeArea(
         child: Obx(
           () => controller.isLoading.value

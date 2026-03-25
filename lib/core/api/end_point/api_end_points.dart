@@ -15,5 +15,7 @@ class ApiEndPoints {
   static const String changePassword = '/auth/resend-otp';
 
   static const String userChangePassword = '/users/change-password';
+  static const String privacyPolicy = '/legal-content/privacy-policy';
+  static const String termsConditions = '/legal-content/terms-and-conditions';
 
 }

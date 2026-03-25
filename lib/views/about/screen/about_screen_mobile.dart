@@ -33,14 +33,14 @@ class AboutScreenMobile extends GetView<AboutController> {
                 icon: Icons.note,
                 label: Strings.termsConditions,
                 onTap: () {
-                  Get.toNamed(Routes.terms_policyScreen);
+                  Get.toNamed(Routes.terms_policyScreen, arguments: "Terms and Conditions");
                 },
               ),
               _SettingTile(
                 icon: Icons.privacy_tip,
                 label: Strings.privacy,
                 onTap: () {
-                  Get.toNamed(Routes.terms_policyScreen);
+                  Get.toNamed(Routes.terms_policyScreen, arguments: "Privacy Policy");
                 },
               ),
             ],
