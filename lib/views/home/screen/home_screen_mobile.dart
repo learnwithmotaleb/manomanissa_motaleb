@@ -7,7 +7,9 @@ class HomeScreenMobile extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Obx(() => controller.isLoading.value ? LoadingWidget() : AnnotatedRegion<SystemUiOverlayStyle>(
+    return Obx(() => controller.isLoading.value ? LoadingWidget() : RepaintBoundary(
+      key: controller.boundaryKey,
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
@@ -97,12 +99,17 @@ class HomeScreenMobile extends GetView<HomeController> {
           ),
         ],
       ),
+    ),
     ),);
   }
 
   Widget _share() {
-    return SizedBox(
-      child: Container(
+    return GestureDetector(
+      onTap: () {
+        controller.shareScreenshot();
+      },
+      child: SizedBox(
+        child: Container(
         padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 14.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimensions.radius * 3),
@@ -119,6 +126,7 @@ class HomeScreenMobile extends GetView<HomeController> {
             TextWidget(Strings.share),
           ],
         ),
+      ),
       ),
     );
   }

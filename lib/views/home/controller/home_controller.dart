@@ -3,13 +3,19 @@ import 'package:fl_chart/fl_chart.dart';
 import '../../../core/api/services/api_request.dart';
 import '../../../core/utils/basic_import.dart';
 import '../model/home_model.dart';
-
+import 'dart:ui' as ui;
+import 'dart:typed_data';
+import 'dart:io';
+import 'package:flutter/rendering.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../core/utils/basic_import.dart';
 
 class HomeController extends GetxController {
   final isLoading = false.obs;
   final homeData = Rxn<HomeModel>();
   final selectedDays = 7.obs;
+  final GlobalKey boundaryKey = GlobalKey();
 
   // Progression data আলাদা store করা
   final spots7Days = <FlSpot>[].obs;
@@ -78,5 +84,38 @@ class HomeController extends GetxController {
         }
       },
     );
+  }
+
+  Future<void> shareScreenshot() async {
+    try {
+      // Small delay to ensure any ripple effect is done
+      await Future.delayed(const Duration(milliseconds: 50));
+
+      final boundary = boundaryKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
+      if (boundary == null) {
+        CustomSnackBar.error('Failed to capture screenshot');
+        return;
+      }
+
+      final image = await boundary.toImage(pixelRatio: 3.0);
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      final pngBytes = byteData?.buffer.asUint8List();
+
+      if (pngBytes != null) {
+        final directory = await getTemporaryDirectory();
+        final imagePath = await File('${directory.path}/screenshot.png').create();
+        await imagePath.writeAsBytes(pngBytes);
+        
+        await Share.shareXFiles(
+          [XFile(imagePath.path)], 
+          text: 'Check out my progress on Manomanissa!',
+          sharePositionOrigin: const Rect.fromLTWH(0, 0, 10, 10),
+        );
+      } else {
+        CustomSnackBar.error('Failed to encode screenshot');
+      }
+    } catch (e) {
+      CustomSnackBar.error('Error sharing screenshot: $e');
+    }
   }
 }
