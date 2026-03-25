@@ -102,11 +102,14 @@ class GoalScreenScreenMobile extends GetView<GoalScreenController> {
                       ),
                     ),
                     Space.height.v25,
-                    PrimaryButtonWidget(
-                      title: Strings.update,
-                      onPressed: () {
-                        Get.back();
-                      },
+                    Obx(() => controller.isLoading.value 
+                      ? LoadingWidget()
+                      : PrimaryButtonWidget(
+                          title: Strings.update,
+                          onPressed: () {
+                            controller.updateGoal();
+                          },
+                        ),
                     ),
                     Space.height.v30,
                   ],

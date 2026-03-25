@@ -17,5 +17,6 @@ class ApiEndPoints {
   static const String userChangePassword = '/users/change-password';
   static const String privacyPolicy = '/legal-content/privacy-policy';
   static const String termsConditions = '/legal-content/terms-and-conditions';
+  static const String onboarding = '/onboarding';
 
 }

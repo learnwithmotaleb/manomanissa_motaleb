@@ -139,11 +139,15 @@ class HealthConditionScreenMobile extends GetView<HealthConditionController> {
                       ),
                     ),
                     Space.height.v30,
-                    PrimaryButtonWidget(
-                      title: Strings.update,
-                      onPressed: () {
-                        Get.back();
-                      },
+                    Obx(
+                      () => controller.isLoading.value
+                          ? LoadingWidget()
+                          : PrimaryButtonWidget(
+                              title: Strings.update,
+                              onPressed: () {
+                                controller.updateHealthCondition();
+                              },
+                            ),
                     ),
                     Space.height.v30,
                   ],
