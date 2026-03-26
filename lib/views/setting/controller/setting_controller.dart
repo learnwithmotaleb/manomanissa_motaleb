@@ -50,6 +50,7 @@ class SettingController extends GetxController {
           TextButton(
             onPressed: () {
               Get.back();
+              AppStorage.clear();
               Get.offAllNamed(Routes.loginScreen);
             },
             child: TextWidget(

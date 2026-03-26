@@ -1,5 +1,6 @@
 import 'dart:developer';
 import '../../../views/login/model/login_model.dart';
+import '../../../views/otp/model/reset_otp_verify.dart';
 import '../../utils/basic_import.dart';
 import '../end_point/api_end_points.dart';
 import '../model/basic_success_model.dart';
@@ -136,32 +137,31 @@ class AuthService {
     );
   }
 
-  // static Future<ResetOtpVerifyModel> forgotOtpVerifyService({
-  //   required RxBool isLoading,
-  //   required String code,
-  //   required String email,
-  // }) async {
-  //   Map<String, dynamic> inputBody = {
-  //     'email': email.trim(),
-  //     'otp': code.trim(),
-  //   };
-  //
-  //   return await _api.post(
-  //     fromJson: ResetOtpVerifyModel.fromJson,
-  //     endPoint: ApiEndPoints.verifyResetOtp,
-  //     isLoading: isLoading,
-  //     body: inputBody,
-  //     showSuccessSnackBar: false,
-  //     onSuccess: (result) {
-  //       AppStorage.save(
-  //         isLoggedIn: true,
-  //         temporaryToken: result.data?.resetToken,
-  //       );
-  //       Get.toNamed(Routes.resetPasswordScreen);
-  //       log('✅ OTP verified successfully');
-  //     },
-  //   );
-  // }
+  static Future<ResetOtpVerifyModel> forgotOtpVerifyService({
+    required RxBool isLoading,
+    required String code,
+    required String email,
+  }) async {
+    Map<String, dynamic> inputBody = {
+      'email': email.trim(),
+      'otp': code.trim(),
+    };
+
+    return await _api.post(
+      fromJson: ResetOtpVerifyModel.fromJson,
+      endPoint: ApiEndPoints.verifyResetOtp,
+      isLoading: isLoading,
+      body: inputBody,
+      showSuccessSnackBar: false,
+      onSuccess: (result) {
+        AppStorage.save(
+          temporaryToken: result.data.resetToken,
+        );
+        Get.toNamed(Routes.reset_passwordScreen);
+        log('✅ OTP verified successfully');
+      },
+    );
+  }
 
   /// =============================================== ✅ Resend OTP ================================================== ///
   /*
@@ -263,8 +263,7 @@ class AuthService {
       showSuccessSnackBar: true,
       onSuccess: (result) {
         AppStorage.save(temporaryToken: '');
-        Get.offAllNamed(Routes.welcomeScreen);
-
+        Get.toNamed(Routes.confirmScreen);
         log('✅ Password reset successful - Please login with new password');
       },
     );

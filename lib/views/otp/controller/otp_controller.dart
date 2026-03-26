@@ -11,7 +11,7 @@ final otpController = TextEditingController();
   RxBool isLoading = false.obs;
 
   otpVerifyProcess() async {
-    return await AuthService.registerOtpVerifyService(
+    return await AuthService.forgotOtpVerifyService(
       isLoading: isLoading,
       code: otpController.text,
       email: Get.find<ForgotPasswordController>().emailController.text,

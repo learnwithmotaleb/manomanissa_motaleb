@@ -104,31 +104,109 @@ class ProfileSetupController extends GetxController {
 
   void showAddMoreDialog() {
     Get.dialog(
-      AlertDialog(
-        backgroundColor: const Color(0xFF1E1E2E),
-        title: TextWidget(
-          "Add Condition",
-          color: CustomColors.whiteColor,
-          fontSize: Dimensions.titleSmall,
-        ),
-        content: PrimaryInputFieldWidget(
-          controller: addMoreController,
-          hintText: "Enter condition name",
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: TextWidget("Cancel", color: CustomColors.primary),
+      Dialog(
+        backgroundColor: Colors.transparent,
+        child: Container(
+          padding: EdgeInsets.all(Dimensions.paddingSize * 0.5),
+          decoration: BoxDecoration(
+            color: const Color(0xFF1E1E2E),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: addMoreCondition,
-            child: TextWidget("Add", color: CustomColors.primary),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+
+              /// 🔹 Title
+              Row(
+                children: [
+                  Icon(Icons.add_circle_outline,
+                      color: CustomColors.primary, size: 26),
+                  SizedBox(width: 8),
+                  TextWidget(
+                    "Add Condition",
+                    fontSize: Dimensions.titleSmall,
+                    color: CustomColors.whiteColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ],
+              ),
+
+              SizedBox(height: Dimensions.verticalSize),
+
+              /// 🔹 Input Field
+              PrimaryInputFieldWidget(
+                controller: addMoreController,
+                hintText: "Enter condition name",
+              ),
+
+              SizedBox(height: Dimensions.paddingSize * 0.5),
+
+              /// 🔹 Buttons
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => Get.back(),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Dimensions.paddingSize * 0.5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: CustomColors.primary.withOpacity(0.5),
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: TextWidget(
+                          "Cancel",
+                          color: CustomColors.primary,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(width: 10),
+
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: addMoreCondition,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Dimensions.paddingSize * 0.5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          gradient: LinearGradient(
+                            colors: [
+                              CustomColors.primary,
+                              CustomColors.primary.withOpacity(0.7),
+                            ],
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: TextWidget(
+                          "Add",
+                          color: CustomColors.whiteColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
-
 
   // Step 4
   void selectCharacter(String character) {

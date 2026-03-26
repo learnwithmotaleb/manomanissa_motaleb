@@ -44,11 +44,14 @@ class ResetPasswordScreenMobile extends GetView<ResetPasswordController> {
                 ),
                 Space.height.betweenInputBox,
 
-                PrimaryButtonWidget(
-                  title: Strings.changePass,
-                  onPressed: () {
-                    Get.toNamed(Routes.confirmScreen);
-                  },
+                Obx(
+                  () => PrimaryButtonWidget(
+                    title: Strings.changePass,
+                    isLoading: controller.isLoading.value,
+                    onPressed: () {
+                      controller.resetPasswordProcess();
+                    },
+                  ),
                 ),
               ],
             ),

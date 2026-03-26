@@ -29,7 +29,7 @@ class OtpScreenMobile extends GetView<OtpController> {
                 ),
                 Space.height.v30,
                 // Email Field
-                OtpInputField(controller: TextEditingController()),
+                OtpInputField(controller: controller.otpController),
                 Space.height.betweenInputBox,
 
                 Obx(

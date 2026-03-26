@@ -43,10 +43,14 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final spots = is7Days ? widget.spots7Days : widget.spots30Days;
+    final labels = widget.bottomLabels;
+
     return Column(
       crossAxisAlignment: crossStart,
       children: [
-        // ─── Header ───────────────────────────────────────
+
+        /// 🔹 Header
         Row(
           mainAxisAlignment: mainSpaceBet,
           children: [
@@ -90,9 +94,10 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
             ),
           ],
         ),
+
         Space.height.v15,
 
-        // ─── Chart Box ────────────────────────────────────
+        /// 🔹 Chart Container
         Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           decoration: BoxDecoration(
@@ -105,10 +110,22 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
           ),
           child: SizedBox(
             height: 160.h,
-            child: LineChart(
+
+            /// 🔥 FIXED CONDITION
+            child: (spots.isEmpty || labels.isEmpty)
+                ? Center(
+              child: TextWidget(
+                "No data available",
+                color: CustomColors.whiteColor.withOpacity(0.5),
+              ),
+            )
+
+            /// 🔥 SAFE CHART
+                : LineChart(
               LineChartData(
                 minY: widget.minY,
                 maxY: widget.maxY,
+
                 gridData: FlGridData(
                   show: true,
                   drawVerticalLine: true,
@@ -123,7 +140,9 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
                     strokeWidth: 1,
                   ),
                 ),
+
                 borderData: FlBorderData(show: false),
+
                 titlesData: FlTitlesData(
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
@@ -131,7 +150,7 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
                       interval: widget.interval,
                       reservedSize: 32.w,
                       getTitlesWidget: (value, meta) => TextWidget(
-                        value.toStringAsFixed(1),
+                        value.toStringAsFixed(0),
                         fontSize: Dimensions.labelSmall,
                         color: CustomColors.whiteColor.withOpacity(0.4),
                       ),
@@ -150,11 +169,11 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
                       reservedSize: 28.h,
                       getTitlesWidget: (value, meta) {
                         final index = value.toInt();
-                        if (index < 0 || index >= widget.bottomLabels.length) {
+                        if (index < 0 || index >= labels.length) {
                           return const SizedBox();
                         }
                         return TextWidget(
-                          widget.bottomLabels[index],
+                          labels[index],
                           fontSize: Dimensions.labelSmall,
                           color: CustomColors.whiteColor.withOpacity(0.5),
                         );
@@ -162,14 +181,18 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
                     ),
                   ),
                 ),
+
                 lineBarsData: [
                   LineChartBarData(
-                    spots: is7Days ? widget.spots7Days : widget.spots30Days,
+                    spots: spots.isEmpty
+                        ? [FlSpot(0, 0)] // 🔥 EXTRA SAFETY
+                        : spots,
                     isCurved: true,
                     curveSmoothness: 0.3,
                     color: const Color(0xFF039CE0),
                     barWidth: 2,
                     isStrokeCapRound: true,
+
                     dotData: FlDotData(
                       show: true,
                       getDotPainter: (spot, percent, bar, index) =>
@@ -180,6 +203,7 @@ class _HistoryChartWidgetState extends State<HistoryChartWidget> {
                             strokeColor: Colors.white,
                           ),
                     ),
+
                     belowBarData: BarAreaData(
                       show: true,
                       gradient: LinearGradient(

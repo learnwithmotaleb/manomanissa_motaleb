@@ -4,16 +4,12 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    Future.delayed(Duration(seconds: 6), () {
-      // if (!AppStorage.onboardSave) {
-      //   Get.offAllNamed(Routes.onboardScreen);
-      // } else if (AppStorage.isLoggedIn) {
-      //   Get.offAllNamed(Routes.navigationScreen);
-      // } else {
-      //   Get.offAllNamed(Routes.loginScreen);
-      // }
-
-      Get.offAllNamed(Routes.welcomeScreen);
+    Future.delayed(const Duration(seconds: 3), () {
+      if (AppStorage.isLoggedIn) {
+        Get.offAllNamed(Routes.navigationScreen);
+      } else {
+        Get.offAllNamed(Routes.welcomeScreen);
+      }
     });
   }
 }
