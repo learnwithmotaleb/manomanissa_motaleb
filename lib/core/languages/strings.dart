@@ -75,7 +75,7 @@ class Strings {
 
   static const String hello = "Hello,";
   static const String yourName = "[Your name]";
-  static const String todaysScore = "Today's Score: 78/100";
+  static const String todaysScore = "Today's Score:";
 
   static const String sleep = "Sleep";
   static const String share = "Share";

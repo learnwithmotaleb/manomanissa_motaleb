@@ -33,17 +33,28 @@ class HomeController extends GetxController {
 
   String get dynamicCharacterPath {
     final factor = homeData.value?.data.mood.primaryFactor.toLowerCase() ?? '';
+    final gender = homeData.value?.data.gender.toLowerCase() ?? 'male';
+    final isMale = gender == 'male';
+
     switch (factor) {
       case 'sleep':
-        return Assets.dummy.sleeping.path;
+        return isMale
+            ? 'assets/dummy/sleeping_male.gif'
+            : 'assets/dummy/sleeping_female.gif';
       case 'hydration_liters':
-        return Assets.dummy.dringking.path;
+        return isMale
+            ? 'assets/dummy/drinking_male.gif'
+            : 'assets/dummy/drinking_female.gif';
       case 'steps':
-        return Assets.dummy.activityJogging.path;
+        return isMale
+            ? 'assets/dummy/activity_male.gif'
+            : 'assets/dummy/activity_female.gif';
       case 'calories':
-        return Assets.dummy.aann.path;
+        return isMale
+            ? 'assets/dummy/nutrition_male.gif'
+            : 'assets/dummy/nutrition_female.gif';
       default:
-        return Assets.dummy.aann.path;
+        return isMale ? 'assets/dummy/male.png' : 'assets/dummy/female.png';
     }
   }
 
