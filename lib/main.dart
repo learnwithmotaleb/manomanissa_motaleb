@@ -13,7 +13,13 @@ void main() async {
   Get.put(NetworkChecker());
   Get.put(SplashController());
 
-  final hasInternet = await NetworkManager.hasConnection();
+  // More resilient internet check
+  bool hasInternet = await NetworkManager.hasConnection();
+  if (!hasInternet) {
+    // Wait a bit and try one more time (give OS time to initialize radio)
+    await Future.delayed(const Duration(seconds: 1));
+    hasInternet = await NetworkManager.hasConnection();
+  }
   bool? lastStatus = hasInternet;
   NetworkManager.connectionStream().listen((isConnected) {
     if (lastStatus != null && lastStatus != isConnected) {
