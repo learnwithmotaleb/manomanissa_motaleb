@@ -106,7 +106,7 @@ class HomeInfoCard extends GetView<HomeController> {
                     child: StatCardWidget(
                       label: Strings.activity,
                       value: '$actVal',
-                      target: '/${actTarget} steps',
+                      target: '/$actTarget steps',
                       progress: actProgress.toDouble().clamp(0.0, 1.0),
                       progressGradient: const LinearGradient(
                         colors: [Color(0xFF039CE0), Color(0xFFA4F4FE)],

@@ -8,52 +8,26 @@ class ActivityScreenMobile extends GetView<ActivityController> {
     return Scaffold(
       appBar: CommonAppBar(title: "Activity"),
       body: SafeArea(
-        child: HealthDetailWidget(
+        child: Obx(() => controller.isLoading.value 
+          ? const LoadingWidget() 
+          : HealthDetailWidget(
           icon: Icon(
             Icons.directions_walk,
             color: CustomColors.primary,
             size: 20.h,
           ),
-          progressLabel: Strings.steps,
-          progressValue: 0.75,
+          progressLabel: Strings.activity,
+          progressValue: controller.progressValue.value,
           infoText: Strings.belowTarget,
-          chartTitle: Strings.sleepHistory,
+          chartTitle: controller.average.value,
           chartMinY: 0,
-          chartMaxY: 10,
-          chartInterval: 2,
-          chartBottomLabels: const [
-            'Sat',
-            'Sun',
-            'Mon',
-            'Tue',
-            'Wed',
-            'Thu',
-            'Fri',
-          ],
-          spots7Days: const [
-            FlSpot(0, 3.5),
-            FlSpot(1, 4.0),
-            FlSpot(2, 3.8),
-            FlSpot(3, 4.2),
-            FlSpot(4, 3.9),
-            FlSpot(5, 5.8),
-            FlSpot(6, 6.2),
-          ],
-          spots30Days: const [
-            FlSpot(0, 4.0),
-            FlSpot(1, 5.0),
-            FlSpot(2, 4.5),
-            FlSpot(3, 6.0),
-            FlSpot(4, 5.5),
-            FlSpot(5, 6.5),
-            FlSpot(6, 7.0),
-          ],
-          suggestions: const [
-            Strings.sleepTip1,
-            Strings.sleepTip2,
-            Strings.sleepTip3,
-          ],
-        ),
+          chartMaxY: 10000,
+          chartInterval: 2000,
+          chartBottomLabels: controller.bottomLabels,
+          spots7Days: controller.spots7Days,
+          spots30Days: controller.spots30Days,
+          suggestions: controller.suggestions,
+        )),
       ),
     );
   }

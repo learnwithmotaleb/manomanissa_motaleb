@@ -74,14 +74,13 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // Fetch both periods at once so tab switching is instant
     fetchHomeData(days: 7);
+    fetchHomeData(days: 30);
   }
 
   void onDaysChanged(int days) {
     selectedDays.value = days;
-    if (days == 30 && spots30Days.isEmpty) {
-      fetchHomeData(days: 30);
-    }
   }
 
   Future<void> fetchHomeData({required int days}) async {

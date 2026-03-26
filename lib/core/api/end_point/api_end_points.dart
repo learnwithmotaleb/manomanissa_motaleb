@@ -19,4 +19,9 @@ class ApiEndPoints {
   static const String termsConditions = '/legal-content/terms-and-conditions';
   static const String onboarding = '/onboarding';
 
+  // METRICS ENDPOINTS
+  static const String sleepMetric = '/metrics/sleep';
+  static const String hydrationMetric = '/metrics/hydration';
+  static const String activityMetric = '/metrics/activity';
+  static const String nutritionMetric = '/metrics/nutrition';
 }

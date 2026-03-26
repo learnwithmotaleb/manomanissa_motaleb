@@ -20,3 +20,4 @@ export 'extensions.dart';
 export '../../../routes/routes.dart';
 export '../widgets/common_app_bar.dart';
 export 'app_storage.dart';
+export '../widgets/loading_widget.dart';
