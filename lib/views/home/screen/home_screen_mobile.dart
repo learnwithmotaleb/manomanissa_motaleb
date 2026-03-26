@@ -6,7 +6,6 @@ class HomeScreenMobile extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Obx(() => controller.isLoading.value ? LoadingWidget() : RepaintBoundary(
       key: controller.boundaryKey,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
