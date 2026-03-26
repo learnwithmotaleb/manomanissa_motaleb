@@ -18,13 +18,13 @@ class $AssetsDummyGen {
   AssetGenImage get activityMale =>
       const AssetGenImage('assets/dummy/Activity Male.gif');
 
-  /// File path: assets/dummy/Activity jogging.gif
-  AssetGenImage get activityJogging =>
-      const AssetGenImage('assets/dummy/Activity jogging.gif');
+  /// File path: assets/dummy/Activity jogging-female.gif
+  AssetGenImage get activityJoggingFemale =>
+      const AssetGenImage('assets/dummy/Activity jogging-female.gif');
 
-  /// File path: assets/dummy/Drinking.gif
-  AssetGenImage get drinking =>
-      const AssetGenImage('assets/dummy/Drinking.gif');
+  /// File path: assets/dummy/Drinking-female.gif
+  AssetGenImage get drinkingFemale =>
+      const AssetGenImage('assets/dummy/Drinking-female.gif');
 
   /// File path: assets/dummy/Frame 2147229116.png
   AssetGenImage get frame2147229116Png =>
@@ -44,9 +44,9 @@ class $AssetsDummyGen {
   AssetGenImage get nutritionMale =>
       const AssetGenImage('assets/dummy/Nutrition Male.gif');
 
-  /// File path: assets/dummy/Sleeping.gif
-  AssetGenImage get sleeping =>
-      const AssetGenImage('assets/dummy/Sleeping.gif');
+  /// File path: assets/dummy/Sleeping-male.gif
+  AssetGenImage get sleepingMale =>
+      const AssetGenImage('assets/dummy/Sleeping-male.gif');
 
   /// File path: assets/dummy/aann.gif
   AssetGenImage get aann => const AssetGenImage('assets/dummy/aann.gif');
@@ -60,13 +60,9 @@ class $AssetsDummyGen {
   /// File path: assets/dummy/button.PNG
   AssetGenImage get button => const AssetGenImage('assets/dummy/button.PNG');
 
-  /// File path: assets/dummy/carecterf.gif
-  AssetGenImage get carecterf =>
-      const AssetGenImage('assets/dummy/carecterf.gif');
-
-  /// File path: assets/dummy/dringking.gif
-  AssetGenImage get dringking =>
-      const AssetGenImage('assets/dummy/dringking.gif');
+  /// File path: assets/dummy/dringking-male.gif
+  AssetGenImage get dringkingMale =>
+      const AssetGenImage('assets/dummy/dringking-male.gif');
 
   /// File path: assets/dummy/female.png
   AssetGenImage get female => const AssetGenImage('assets/dummy/female.png');
@@ -74,9 +70,9 @@ class $AssetsDummyGen {
   /// File path: assets/dummy/male.png
   AssetGenImage get male => const AssetGenImage('assets/dummy/male.png');
 
-  /// File path: assets/dummy/sleeepingm.gif
-  AssetGenImage get sleeepingm =>
-      const AssetGenImage('assets/dummy/sleeepingm.gif');
+  /// File path: assets/dummy/sleeepingm-female.gif
+  AssetGenImage get sleeepingmFemale =>
+      const AssetGenImage('assets/dummy/sleeepingm-female.gif');
 
   /// File path: assets/dummy/splashgif.gif
   AssetGenImage get splashgif =>
@@ -91,23 +87,22 @@ class $AssetsDummyGen {
   /// List of all assets
   List<dynamic> get values => [
     activityMale,
-    activityJogging,
-    drinking,
+    activityJoggingFemale,
+    drinkingFemale,
     frame2147229116Png,
     frame2147229116Svg,
     frame,
     nutritionFemale,
     nutritionMale,
-    sleeping,
+    sleepingMale,
     aann,
     bg,
     blur,
     button,
-    carecterf,
-    dringking,
+    dringkingMale,
     female,
     male,
-    sleeepingm,
+    sleeepingmFemale,
     splashgif,
     verify,
     welcom,
