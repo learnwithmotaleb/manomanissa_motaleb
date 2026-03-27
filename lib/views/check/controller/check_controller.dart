@@ -1,3 +1,5 @@
+import 'package:manomanissa/views/navigation/controller/navigation_controller.dart';
+
 import '../../../core/api/model/basic_success_model.dart';
 import '../../../core/api/services/api_request.dart';
 import '../../../core/utils/basic_import.dart';
@@ -20,7 +22,9 @@ class CheckController extends GetxController {
         "activity": {"steps": activityValue.value.toInt()},
         "nutrition": {"calories": nutritionValue.value.toInt()},
       },
-      onSuccess: (result) {},
+      onSuccess: (result) {
+        Get.find<NavigationController>().changePage(0);
+      },
     );
   }
 }

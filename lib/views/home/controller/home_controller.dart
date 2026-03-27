@@ -15,7 +15,6 @@ class HomeController extends GetxController {
   final selectedDays = 7.obs;
   final GlobalKey boundaryKey = GlobalKey();
 
-  // Progression data আলাদা store করা
   final spots7Days = <FlSpot>[].obs;
   final spots30Days = <FlSpot>[].obs;
   final labels7Days = <String>[].obs;
@@ -23,7 +22,6 @@ class HomeController extends GetxController {
 
   String get userName {
     final greeting = homeData.value?.data.greeting ?? '';
-    // "Hello, Inès Laurent" → "Inès Laurent"
     if (greeting.contains(', ')) return greeting.split(', ').last;
     if (greeting.contains(' ')) return greeting.split(' ').sublist(1).join(' ');
     return greeting;
@@ -33,8 +31,8 @@ class HomeController extends GetxController {
 
   String get dynamicCharacterPath {
     final factor = homeData.value?.data.mood.primaryFactor.toLowerCase() ?? '';
-    final gender = homeData.value?.data.gender.toLowerCase() ?? 'male';
-    final isMale = gender == 'male';
+    final gender = homeData.value?.data.gender.toLowerCase() ?? 'MALE';
+    final isMale = gender == 'MALE';
 
     switch (factor) {
       case 'sleep':
@@ -54,11 +52,10 @@ class HomeController extends GetxController {
             ? 'assets/dummy/nutrition_male.gif'
             : 'assets/dummy/nutrition_female.gif';
       default:
-        return isMale ? 'assets/dummy/male.png' : 'assets/dummy/female.png';
+        return isMale ? 'assets/dummy/drinking_male.gif' : 'assets/dummy/drinking_female.gif';
     }
   }
 
-  // Dummy metrics getters to keep HomeInfoCard from throwing errors since API no longer provides these
   double get sleepVal => 0.0;
   double get sleepTarget => 8.0;
   double get hydVal => 0.0;
