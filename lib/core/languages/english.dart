@@ -114,4 +114,11 @@ Map<String, String> english = {
   Strings.healthCondition: "Health Conditions ",
   Strings.termsConditions: "Terms & Conditions",
   Strings.privacy: "Privacy & Policy",
+  Strings.setYourGoal: "Set your goal",
+  Strings.youCanChooseSeveral: "You can choose several",
+  Strings.faqs: "FAQs",
+  Strings.addCondition: "Add Condition",
+  Strings.enterConditionName: "Enter condition name (e.g. Asthma)",
+  Strings.cancel: "Cancel",
+  Strings.add: "Add",
 };

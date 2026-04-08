@@ -23,7 +23,7 @@ class Faqs{
   final String id;
   final String question;
   final String answer;
-  final bool active;
+  final bool ?  active;
   final DateTime createdAt;
   final DateTime updatedAt;
   final int v;
@@ -32,7 +32,7 @@ class Faqs{
     required this.id,
     required this.question,
     required this.answer,
-    required this.active,
+     this.active,
     required this.createdAt,
     required this.updatedAt,
     required this.v,
@@ -42,7 +42,7 @@ class Faqs{
     id: json["_id"],
     question: json["question"],
     answer: json["answer"],
-    active: json["active"],
+    active: json["active"] ?? false,
     createdAt: DateTime.parse(json["createdAt"]),
     updatedAt: DateTime.parse(json["updatedAt"]),
     v: json["__v"],

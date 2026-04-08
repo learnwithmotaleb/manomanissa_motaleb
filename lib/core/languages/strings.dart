@@ -175,14 +175,9 @@ class Strings {
   static const String youCanChooseSeveral = "You can choose several";
   static const String faqs = "FAQs";
 
-
-
-
-
-
-
-
-
-
+  static const String addCondition = "Add Condition";
+  static const String enterConditionName = "Enter condition name (e.g. Asthma)";
+  static const String cancel = "Cancel";
+  static const String add = "Add";
 
 }

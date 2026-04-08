@@ -114,4 +114,12 @@ Map<String, String> french = {
   Strings.healthCondition: "Conditions de santé ",
   Strings.termsConditions: "Termes & Conditions",
   Strings.privacy: "Confidentialité & Politique",
+
+  Strings.setYourGoal: "Fixez votre objectif",
+  Strings.youCanChooseSeveral: "Vous pouvez en choisir plusieurs",
+  Strings.faqs: "FAQ",
+  Strings.addCondition: "Ajouter une pathologie",
+  Strings.enterConditionName: "Entrez le nom de pathologie (ex: Asthme)",
+  Strings.cancel: "Annuler",
+  Strings.add: "Ajouter",
 };

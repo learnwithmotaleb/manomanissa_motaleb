@@ -68,7 +68,7 @@ class HealthConditionController extends GetxController {
                       Icon(Icons.health_and_safety_outlined, color: CustomColors.primary, size: 24.h),
                       Space.width.v10,
                       TextWidget(
-                        "Add Condition",
+                        Strings.addCondition,
                         color: CustomColors.whiteColor,
                         fontSize: Dimensions.titleMedium,
                         fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ class HealthConditionController extends GetxController {
               Space.height.v25,
               PrimaryInputFieldWidget(
                 controller: addMoreController,
-                hintText: "Enter condition name (e.g. Asthma)",
+                hintText: Strings.enterConditionName,
               ),
               Space.height.v30,
               Row(
@@ -116,7 +116,7 @@ class HealthConditionController extends GetxController {
                           borderRadius: BorderRadius.circular(Dimensions.radius * 2),
                           border: Border.all(color: CustomColors.whiteColor.withOpacity(0.2)),
                         ),
-                        child: TextWidget("Cancel", color: CustomColors.whiteColor.withOpacity(0.8), fontWeight: FontWeight.w600),
+                        child: TextWidget(Strings.cancel, color: CustomColors.whiteColor.withOpacity(0.8), fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),
@@ -138,7 +138,7 @@ class HealthConditionController extends GetxController {
                             ),
                           ],
                         ),
-                        child: TextWidget("Add", color: CustomColors.whiteColor, fontWeight: FontWeight.bold),
+                        child: TextWidget(Strings.add, color: CustomColors.whiteColor, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

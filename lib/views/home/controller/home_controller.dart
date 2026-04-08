@@ -86,7 +86,6 @@ class HomeController extends GetxController {
     fetchHomeData(days: 7);
     fetchHomeData(days: 30);
   }
-
   void onDaysChanged(int days) {
     selectedDays.value = days;
   }

@@ -134,7 +134,6 @@ class UpdateProfileController extends GetxController {
         if (selectedGender.value.isNotEmpty) "gender": selectedGender.value,
       },
       onSuccess: (result) {
-        CustomSnackBar.success(title: Strings.success, message: result.message);
         Get.back();
       },
     );

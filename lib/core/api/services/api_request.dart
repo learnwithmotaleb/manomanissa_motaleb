@@ -9,6 +9,7 @@ import '../end_point/api_end_points.dart';
 
 /// ========================================== 🔥 HTTP CLIENT ========================================== ///
 class ApiRequest {
+
   /// ✅ Header Generator
   Future<Map<String, String>> _bearerHeaderInfo([String? token]) async {
     final authToken = token ?? AppStorage.token;
@@ -60,7 +61,7 @@ class ApiRequest {
 
     required Map<String, dynamic> body,
     Map<String, dynamic>? queryParams,
-    bool showSuccessSnackBar = false,
+    bool showSuccessSnackBar = true,
     Function(R result)? onSuccess,
   }) async {
     try {
@@ -212,7 +213,7 @@ class ApiRequest {
     required Map<String, dynamic> body,
     String? id,
     Map<String, dynamic>? queryParams,
-    bool showSuccessSnackBar = false,
+    bool showSuccessSnackBar = true,
     Function(R result)? onSuccess,
   }) async {
     try {
@@ -277,7 +278,7 @@ class ApiRequest {
     required RxBool isLoading,
     required Map<String, dynamic> body,
     Map<String, dynamic>? queryParams,
-    bool showSuccessSnackBar = false,
+    bool showSuccessSnackBar = true,
     Function(R result)? onSuccess,
   }) async {
     try {
@@ -336,7 +337,7 @@ class ApiRequest {
     required RxBool isLoading,
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParams,
-    bool showSuccessSnackBar = false,
+    bool showSuccessSnackBar = true,
     Function(R result)? onSuccess,
   }) async {
     try {
@@ -409,7 +410,7 @@ class ApiRequest {
     List<String>? sizes,
     String? singleQueryParam,
     required R Function(Map<String, dynamic>) fromJson,
-    bool showSuccessSnackBar = false,
+    bool showSuccessSnackBar = true,
     Function(R result)? onSuccess,
     String? token,
   }) async {
@@ -520,7 +521,7 @@ class ApiRequest {
     String itemKey = 'product',
     VoidCallback? onSuccess,
     Function(String message)? onError,
-    bool showSuccessSnackBar = false,
+    bool showSuccessSnackBar = true,
     String? customSuccessMessage,
     Map<String, dynamic>? customBody,
     Map<String, dynamic>? queryParams,
