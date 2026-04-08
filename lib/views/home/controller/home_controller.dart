@@ -31,8 +31,8 @@ class HomeController extends GetxController {
 
   String get dynamicCharacterPath {
     final factor = homeData.value?.data.mood.primaryFactor.toLowerCase() ?? '';
-    final gender = homeData.value?.data.gender.toLowerCase() ?? 'MALE';
-    final isMale = gender == 'MALE';
+    final gender = homeData.value?.data.gender.toLowerCase() ?? 'male';
+    final isMale = gender == 'male';
 
     switch (factor) {
       case 'sleep':

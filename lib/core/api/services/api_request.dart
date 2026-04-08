@@ -20,7 +20,6 @@ class ApiRequest {
     };
   }
 
-
   void _handleUnauthorized(http.Response response) {
     if (response.statusCode == 401) {
       final error = jsonDecode(response.body);
@@ -76,8 +75,7 @@ class ApiRequest {
       printBody(body);
 
       final response = await http
-          .post(uri,
-          headers: await _bearerHeaderInfo(), body: jsonEncode(body))
+          .post(uri, headers: await _bearerHeaderInfo(), body: jsonEncode(body))
           .timeout(const Duration(seconds: 120));
 
       log('|✅|---------[ ✅ HTTP POST REQUEST COMPLETED ]---------|✅|');
@@ -86,8 +84,13 @@ class ApiRequest {
         final Map<String, dynamic> json = jsonDecode(response.body);
         final result = fromJson(json);
 
-        final successMessage = json['message'] ?? Strings.requestCompletedSuccessfully;
-        if (showSuccessSnackBar) CustomSnackBar.success(title: Strings.success,message: successMessage);
+        final successMessage =
+            json['message'] ?? Strings.requestCompletedSuccessfully;
+        if (showSuccessSnackBar)
+          CustomSnackBar.success(
+            title: Strings.success,
+            message: successMessage,
+          );
         if (onSuccess != null) onSuccess(result);
         return result;
       } else {
@@ -125,7 +128,9 @@ class ApiRequest {
       isLoading.value = true;
       log('|📥|---------[ 🌐 HTTP GET REQUEST STARTED ]---------|📥|');
 
-      final baseUrl = useAiBaseUrl ? ApiEndPoints.aiBaseUrl : ApiEndPoints.baseUrl;
+      final baseUrl = useAiBaseUrl
+          ? ApiEndPoints.aiBaseUrl
+          : ApiEndPoints.baseUrl;
       String fullUrl = '$baseUrl$endPoint';
       if (id != null && id.isNotEmpty) {
         fullUrl += '/$id';
@@ -139,7 +144,7 @@ class ApiRequest {
 
       final uri = Uri.parse(fullUrl).replace(
         queryParameters: queryParams?.map(
-              (key, value) => MapEntry(key, value.toString()),
+          (key, value) => MapEntry(key, value.toString()),
         ),
       );
       printUrl(uri.toString());
@@ -150,8 +155,9 @@ class ApiRequest {
 
       if (showResponse) {
         try {
-          final prettyJson = const JsonEncoder.withIndent('  ')
-              .convert(jsonDecode(response.body));
+          final prettyJson = const JsonEncoder.withIndent(
+            '  ',
+          ).convert(jsonDecode(response.body));
           log('|📤|---------[ RESPONSE BODY ]---------|📤|');
           log(prettyJson);
           log('|📤|---------------------------------|📤|');
@@ -160,7 +166,9 @@ class ApiRequest {
         }
       }
       log('|✅|---------[ ✅ HTTP GET REQUEST COMPLETED ]---------|✅|');
-      log('╚════════════════════════════════════════════════════════════════════════════════════════════');
+      log(
+        '╚════════════════════════════════════════════════════════════════════════════════════════════',
+      );
 
       if (response.statusCode == 200) {
         final decoded = jsonDecode(response.body);
@@ -222,10 +230,10 @@ class ApiRequest {
 
       final response = await http
           .patch(
-        uri,
-        headers: await _bearerHeaderInfo(),
-        body: jsonEncode(body),
-      )
+            uri,
+            headers: await _bearerHeaderInfo(),
+            body: jsonEncode(body),
+          )
           .timeout(const Duration(seconds: 120));
 
       log('|✅|---------[ ✅ HTTP PATCH REQUEST COMPLETED ]---------|✅|');
@@ -346,10 +354,10 @@ class ApiRequest {
 
       final response = await http
           .delete(
-        uri,
-        headers: await _bearerHeaderInfo(),
-        body: body != null ? jsonEncode(body) : null,
-      )
+            uri,
+            headers: await _bearerHeaderInfo(),
+            body: body != null ? jsonEncode(body) : null,
+          )
           .timeout(const Duration(seconds: 120));
 
       log('|✅|---------[ ✅ HTTP DELETE REQUEST COMPLETED ]---------|✅|');
@@ -528,8 +536,7 @@ class ApiRequest {
       final body = customBody ?? {itemKey: itemId};
 
       final response = await http
-          .post(uri,
-          headers: await _bearerHeaderInfo(), body: jsonEncode(body))
+          .post(uri, headers: await _bearerHeaderInfo(), body: jsonEncode(body))
           .timeout(const Duration(seconds: 120));
       if (response.statusCode == 200 || response.statusCode == 201) {
         final Map<String, dynamic> json = jsonDecode(response.body);
@@ -538,7 +545,8 @@ class ApiRequest {
         if (isSuccess) {
           onSuccess?.call();
           if (showSuccessSnackBar) {
-            final successMessage = customSuccessMessage ??
+            final successMessage =
+                customSuccessMessage ??
                 json['message'] ??
                 (isFavorite.value
                     ? 'Added to favorites'

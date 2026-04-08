@@ -127,6 +127,8 @@ GetPage(
     name: Routes.navigationScreen,
     page: () => const NavigationScreen(),
     binding: NavigationBinding(),
+    transition: Transition.fadeIn,
+    transitionDuration: const Duration(milliseconds: 600),
   ),
 GetPage(
     name: Routes.questionsScreen,
@@ -147,16 +149,22 @@ GetPage(
     name: Routes.welcomeScreen,
     page: () => const WelcomeScreen(),
     binding: WelcomeBinding(),
+    transition: Transition.fadeIn,
+    transitionDuration: const Duration(milliseconds: 600),
   ),
 GetPage(
     name: Routes.navigationScreen,
     page: () => const NavigationScreen(),
     binding: NavigationBinding(),
+    transition: Transition.fadeIn,
+    transitionDuration: const Duration(milliseconds: 600),
   ),
 GetPage(
     name: Routes.loginScreen,
     page: () => const LoginScreen(),
     binding: LoginBinding(),
+    transition: Transition.fadeIn,
+    transitionDuration: const Duration(milliseconds: 600),
   ),
 GetPage(
     name: Routes.splashScreen,

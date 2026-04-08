@@ -61,6 +61,7 @@ import '../views/login/screen/login_screen.dart';
 import '../bind/splash_binding.dart';
 import '../views/splash/screen/splash_screen.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
 part 'pages.dart';
 
 class Routes {

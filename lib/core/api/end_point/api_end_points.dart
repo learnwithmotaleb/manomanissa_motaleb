@@ -1,5 +1,5 @@
 class ApiEndPoints {
-  static const String baseUrl = 'https://bvh0nlc7-3002.inc1.devtunnels.ms/api';
+  static const String baseUrl = 'https://pn9hvmp3-3002.asse.devtunnels.ms/api';
   static const String aiBaseUrl = 'http://10.10.20.111:8006';
 
 
