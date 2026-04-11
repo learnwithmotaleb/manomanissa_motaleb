@@ -163,14 +163,7 @@ class Strings {
   static const String healthCondition = "Health Conditions ";
   static const String termsConditions = "Terms & Conditions";
   static const String privacy = "Privacy & Policy";
-
-
-
-
-
-
-
-
+        
   static const String setYourGoal = "Set your goal";
   static const String youCanChooseSeveral = "You can choose several";
   static const String faqs = "FAQs";
